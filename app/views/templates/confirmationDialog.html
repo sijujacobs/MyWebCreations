@@ -1,0 +1,17 @@
+<div id="confirmationModal" class="modalWindow" ng-show="isConfirmationModalVisible">
+<div class="modalContent">
+<div class="modalHeader">
+  <span class="closeButton" ng-click="closeModal()">&times;</span>
+  <span>Confirmation</span>
+</div>
+<div class="modalBody">
+  <form>
+    <div class="formRow">
+    	<label class="formLabel" for="email">Are you sure ?</label>
+    </div>
+    <button class="formButton" ng-click="deleteMember(selectedMember)">Delete</button>
+    <button class="formButton" ng-click="closeModal()">Cancel</button>
+  </form>
+</div>
+</div>
+</div><!-- END modal -->

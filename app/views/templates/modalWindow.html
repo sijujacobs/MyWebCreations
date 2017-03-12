@@ -1,0 +1,40 @@
+          <div id="loginModal" class="modalWindow">
+        <div class="modalContent">
+        <div class="modalHeader">
+          <span class="closeButton">&times;</span>
+          <span>Sign In</span>
+        </div>
+        <div class="modalBody">
+          <form action="action_page.php">
+            <label for="fname">Username</label>
+            <input class="inputField" type="text" id="fname" name="firstname">
+
+            <label for="lname">Password</label>
+            <input class="inputField" type="text" id="lname" name="lastname">
+
+            <input class="inputButton" type="submit" value="Submit">
+          </form>
+        </div>
+        </div>
+      </div><!-- END modal -->
+      <script>
+
+ var modal = document.getElementById('loginModal');
+      var btn = document.getElementById("loginButton");
+      var closeButton = document.getElementsByClassName("closeButton")[0];
+
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      closeButton.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      </script>

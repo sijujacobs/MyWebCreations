@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Web Creations</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+   <link rel="stylesheet" href="css/myWebCreationStyle.css">
+	<style>
+	</style>
+</head>
+<body>
+		<!-- ---------------------------------Main Container------------------------ -->
+<div id="mainContainer">
+	
+	<div id="navMenuBar">
+		<label for="toggleCheckBox" class="toggleButton">☰</label>
+		<ul id="menu">
+			<li><a href="#">Home</a></li>
+			<li><a href="app/views/jstips.html">HTML/CSS</a></li>
+			<li><a class="dropDownHeader" href="app/views/crud.html">Crud</a></li>
+			<li>
+				<a class="dropDownHeader" href="#">Server</a>
+				<ul class="dropDownMenu">
+					<li><a href="#">NodeJS</a></li>
+					<li><a href="#">PHP</a></li>
+					<li><a href="#">Java</a></li>
+					<li><a href="#">.Net</a></li>
+				</ul>
+			</li>
+			<li><a ng-click="showMemberLoginModal()" id="loginButton" href="#">Login</a></li>
+		</ul>
+	</div>
+	<div class="heroBanner">
+		<div class="heroContainer">
+			<h1 class="heroHeader">My Web creations</h1>
+		</div>
+	</div><!-- END heroBanner -->
+
+<div class="contentRow">
+	<div class="col-m-3">
+		<div class="contentHeader">
+			<p>Apps</p>
+		</div>
+	</div>
+	<div class="col-m-3">
+		<div class="contentHeader">
+			<p>Components</p>
+		</div>
+	</div>
+	<div class="col-m-3">
+		<div class="contentHeader">
+			<p>Docs</p>
+		</div>
+	</div>
+</div><!-- END contentRow -->
+<div class="footer"><div class="contentHeader"></div></div><!-- END Main Container -->
+
+</div><!-- END Main Container -->
+	<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				console.log("togglebutton clicked----");
+				$("#menu").toggleClass( "showMenu" );
+			});
+		})();
+	</script>
+</body>
+</html>

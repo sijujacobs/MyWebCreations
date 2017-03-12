@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Malankara, Catholic, Edmonton">
+    <meta name="description" content="Malankara Catholic Mission">
+
+    <title>MCM Edmonton</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/modern-business.css" rel="stylesheet">
+<style type="text/css">
+    
+    .navbar-inverse {
+        height: 60px;
+    }
+    .navbar-inverse .navbar-nav>li>a {
+        color: #fffefe;
+    }
+    @media (max-width: 768px){
+        .navbar-nav {
+            background: #222;
+            opacity: 0.9;
+            text-align: center;
+        }
+    }
+    
+    header.carousel {
+        height: 50%;
+        min-height: 350px;
+    }
+
+    footer {
+        margin: 10px 0 0 0;
+        background-color: #222;
+        height: 80px;
+        padding: 30px 0 0 70px;
+    }
+
+    .carousel-caption {
+        bottom: 100px;
+    }
+    
+    .articleLeftIndent{
+        margin-left: 250px;
+    }
+    
+    .disableActiveLink {
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .hovereffect {
+        width:100%;
+        height:100%;
+        float:left;
+        overflow:hidden;
+        position:relative;
+        text-align:center;
+        cursor:default;
+        margin-bottom: 20px;
+    }
+
+    .hovereffect img {
+        display:block;
+        position:relative;
+        -webkit-transition:all .4s linear;
+        transition:all .4s linear;
+    }
+
+    .hovereffect:hover img {
+        -ms-transform:scale(1.2);
+        -webkit-transform:scale(1.2);
+        transform:scale(1.2);
+    }
+
+    .nav li:hover a , .carousel-caption:hover {
+        color: #f5814d !important;
+    }
+
+
+
+  .modalWindow {
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+  }
+
+  .modalContent {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #444;
+    border-radius:5px;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.8s;
+    animation-name: animatetop;
+    animation-duration: 0.8s;
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  
+  /* The Close Button */
+  .closeButton {
+    color: #d4d4d4;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .closeButton:hover,
+  .closeButton:focus {
+    color: #e6690d;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modalHeader {
+    padding: 5px 16px;
+    height:40px;
+    font-size:20px;
+    background-color: #585858;
+    color: #d4d4d4;
+  }
+
+  .modalBody {
+    padding: 20px;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .inputButton{
+    width: 100%;
+    background-color: #585858;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:bold;
+    color: #d4d4d4;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .inputButton:hover {
+    background-color: #e6690d;
+  }
+
+  .formRow{
+        float: left;
+        clear: both;
+        width: 100%
+    }
+
+
+    .formLabel {
+        width: 25%;
+        display: inline-block;
+    }
+
+    .formField {
+        width: 70%;
+        padding: 5px 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .formButton {
+        background-color: #585858;
+        width: 100px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        color: #d4d4d4;
+        padding: 5px 10px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .copyright, .footerleft a{
+        color:#6d5858;
+    }
+
+    .footerleft li{
+        float: left;
+        margin-right: 10px;
+    }
+
+    ul.footerleft{
+        list-style-type: none;
+        margin-left: -25px;
+    }
+
+</style>
+</head>
+
+<body ng-controller="homePageController">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img style="margin-top:-10px; width:50px; height:50px; " src="images/mcmLogo.png" alt="Logo"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="disableActiveLink">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="app/views/services.html">Services</a>
+                    </li>
+                    <li>
+                        <a href="app/views/history.html">History</a>
+                    </li>
+                    <li style="display: none">
+                        <a href="app/views/gallery.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="app/views/location.html">Location</a>
+                    </li>
+                    <li>
+                        <a href="app/views/contact.html">Contact</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Header Carousel -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill" style="background-image:url('images/catholicate.jpg');"></div>
+                <div class="carousel-caption">
+                    <h1 >Malankara Catholic Mission</h1>
+                <h4 >Edmonton</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container" ng-init="init();">
+        <!-- Marketing Icons Section -->
+        <div class="row" ng-repeat="hpData in homePageData">
+            <div class="col-lg-12">
+                <h4 class="page-header">
+                    <marquee class="marqueeMessage">{{hpData.marqueeMessage}}</marquee>
+                </h4>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-check"></i> Welcome</h4>
+                    </div>
+                    <div class="panel-body extraHeight">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="images/group1.jpg" alt="">
+                        </div>
+                            <br>
+                            <p>The Malankara Catholic Community in Edmonton has crossed a milestone in reaching out to the world. We are happy to share the growth of our community through this website. This will be the official website of Malankara Catholic Mission in Edmonton. Holy Mass timings and other updates will be posted regularly. The message section will be available to all to communicate with me personally. Hope this serves to help the faithful.</p>
+                        <h4><p>Vicar,<br>
+                        Fr. Thomas Puthupparampil.</p></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i> Events</h4>
+                    </div>
+                    <div class="panel-body extraHeight">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="images/group2.jpg" alt="">
+                        </div>
+                        <h4><p>{{hpData.eventHeader1}}</p></h4>
+                        <p>{{hpData.eventSection1}}</p>
+                        
+                        <h4><p>{{hpData.eventHeader2}}</p></h4>
+                        <p>{{hpData.eventSection2}}</p>
+
+                        <h4><p>{{hpData.eventHeader3}}</p></h4>
+                        <p>{{hpData.eventSection3}}</p>
+
+                        <h4><p>{{hpData.eventHeader4}}</p></h4>
+                        <p>{{hpData.eventSection4}}</p>
+
+                        <h4><p>{{hpData.eventHeader5}}</p></h4>
+                        <p>{{hpData.eventSection5}}</p>
+
+                        <p style="height:150px"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i> Services</h4>
+                    </div>
+                    <div class="panel-body extraHeight">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="images/group3.jpg" alt="">
+                        </div>
+                        <h4><p>{{hpData.serviceHeader1}}</p></h4>
+                        <p>{{hpData.serviceSection1}}</p>
+                        <h4><p>{{hpData.serviceHeader2}}</p></h4>
+                        <p>{{hpData.serviceSection2}}</p>
+                        <h4><p>{{hpData.serviceHeader3}}</p></h4>
+                        <p>{{hpData.serviceSection3}}</p>
+                        <h4><p>{{hpData.serviceHeader4}}</p></h4>
+                        <p>{{hpData.serviceSection4}}</p>
+                        <h4><p>{{hpData.serviceHeader5}}</p></h4>
+                        <p>{{hpData.serviceSection5}}</p>
+                    
+                        <a href="location.html" class="btn btn-primary">Location</a>
+                        <p style="height:285px"></p>
+                    </div>
+                </div>
+            </div>
+            <login-modal><p class="modal-title">Modal Content Goes here</p></login-modal>
+        </div>
+        <!-- /.row -->
+
+        <!-- Features Section -->
+        
+    </div>
+    <!-- /.container -->
+ <!-- Footer -->
+        <footer>
+            <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="copyright">Copyright © 2017 malankaracatholicedmonton.org 2017. All rights reserved.</div>
+                </div>
+                
+                <ul class="footerleft">
+                    <li>
+                        <a ng-click="showMemberLoginModal()" href="#">Admin</a>
+                    </li>
+                    <li>
+                        <a href="location.html">Location</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                        
+                
+            </div>
+        </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+      
+    <script src="app/app.js"></script>
+ 
+    <script src="app/controller/homePageController.js"></script>
+    <script src="app/services/homePageFactory.js"></script>
+</body>
+
+</html>

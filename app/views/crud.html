@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>My Web Creations</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../css/myWebCreationStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+	<style type="text/css">
+
+	</style>
+	 
+</head>
+<body>
+		<!-- -Main Container -->
+		<div id="mainContainer" ng-controller="memberController">
+			<div id="navMenuBar">
+				<label for="toggleCheckBox" class="toggleButton">☰</label>
+				<ul id="menu">
+					<li><a href="../../index.html">Home</a></li>
+					<li><a href="../../jstips.html">HTML/CSS</a></li>
+					<li><a class="dropDownHeader disableActiveLink">Crud</a></li>
+					<li>
+						<a class="dropDownHeader" href="#">Server</a>
+						<ul class="dropDownMenu">
+							<li><a href="#">NodeJS</a></li>
+							<li><a href="#">PHP</a></li>
+							<li><a href="#">Java</a></li>
+							<li><a href="#">.Net</a></li>
+						</ul>
+					</li>
+					<li><a ng-click="showMemberLoginModal()" id="loginButton" href="#">Login</a></li>
+				</ul>
+			</div>
+			<div class="contentRow">
+			<div class="container" ng-init="init();">
+				  <div class="row">
+						<form method="post" action="../../php/uploadFiles/imageUploader.php" enctype="multipart/form-data">
+							<span class="btn btn-primary">
+								Browse...<input id="file" name="files[]" class="browseFile" type="file" multiple=""  />
+							</span>
+							<input type="submit" id="uploadButton"  class="btn btn-primary" value="Upload"></input>
+							<div id="imageHolder"></div>
+							
+						</form>
+				    <div>
+				    <div class="clearfix"></div>
+
+				    <!-- Table to show member detalis -->
+				      <div class="table-responsive">
+				        <table class="table table-hover">
+				        <tr>
+				          <th>Member ID</th>
+				          <th>First Name</th>
+				          <th>Last Name</th>
+				          <th>Email</th>
+				          <th>Phone</th>
+				        </tr>
+				        <!-- 
+					selected-member="" directive-function="directiveCallBack(member, $index)"  
+                  	ng-click="memberSingleClick(member, $index)"
+                   -->
+						<tr ng-repeat="member in members| filter:search_query" ng-dblclick="showMemberViewModal(member)"  ng-class="{selectedRowColor: $index == selectedRowIndex}" ng-click="memberSingleClick(member, $index)" >
+							<td><span>{{$index + 1}}</span></td>
+							<td>{{member.firstName}}</td>
+							<td>{{member.lastName}}</td>
+							<td>{{member.email}}</td>
+							<td>{{member.phone}}</td>
+							</tr>
+				        </table>
+				      </div>
+
+				      <hr>
+						<member-view-modal><p class="modal-title">Member View Modal Content Goes here</p></member-view-modal>
+				    </div>
+				            
+				  </div>
+
+				        <!-- /.row -->
+				<div class="row" >
+					<input class="btn btn-info" value="Insert" ng-click="insertButtonClicked()" ng-disabled="isButtonDisabled">
+					<input class="btn btn-info" value="Edit" ng-click="editButtonClicked()" ng-disabled="isButtonDisabled">
+					<input class="btn btn-danger" value="Delete" ng-click="deleteButtonClicked()" ng-disabled="isButtonDisabled">
+				</div>		 
+				<w3-test-directive></w3-test-directive>
+				 <div class="loader ng-hide" data-loading style="position: absolute; left:0; top:0; width: 50px; height: 50px; background-color: red; border-radius: 50px;" ></div>
+				
+			</div>
+
+          	
+
+			<div class="footer"><div class="contentHeader"></div></div><!-- END Main Container -->
+			 <login-modal><p class="modal-title">Modal Content Goes here</p></login-modal>
+		</div><!-- END Main Container -->
+	<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				console.log("togglebutton clicked----");
+				$("#menu").toggleClass( "showMenu" );
+			});
+
+		
+      
+		})();
+	</script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+	  
+	  <script src="../../app/app.js"></script>
+	  <!-- <script src="app/services/MemberService.js"></script> -->
+	  <script src="../../app/controller/memberController.js"></script>
+	  <script src="../../app/services/memberFactory.js"></script>
+	  <script src="../../js/imageUploader.js"></script>
+</body>
+</html>
