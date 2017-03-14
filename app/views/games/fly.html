@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>BackgroudDesigns</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<style>
+		.section1{
+			height: 800px;
+			width:1000px;
+			overflow:hidden;
+			float:left;
+			cursor: url('images/hammer.png'), pointer;
+		}
+		.section2{
+			border:1px solid #000;
+			height: 200px;
+			width:250px;
+			overflow:hidden;
+			float:right;  
+		}
+		
+		.controller{
+			margin-left:20px;
+		}
+
+		.container1 {
+		  max-width: 500px;
+		  margin: 0 auto;
+		  position:relative;
+		}
+		
+		#fly, #fly2, #fly3 {
+			left:0;
+			position:absolute;
+			visibility:hidden;
+		}
+		
+		.buttonController{
+			margin:20px 0 20px 0;
+		}
+		
+		.button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			width : 100px;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-bottom : 20px;
+		}
+		
+		.buttonController label{
+			font-weight:bolder;
+		}
+		
+		label{
+			padding:5px;
+			color:#222;
+			font-family:corbel,sans-serif;
+			font-size: 14px;
+			margin: 10px;
+			vertical-align:top;
+		}
+
+	</style>
+
+	<script>
+		$(document).ready(function ($) {
+			var flyTimer, flyCounter = 0, flyText ="", flightSpeed, slapSound;
+			
+			
+			init();
+			
+			function init(){
+				flightSpeed = $('input[type="radio"]:checked').val();
+				slapSound = new Audio("audios/slap.wav");
+			}
+			
+			function moveFly(){
+				var xPosition = Math.floor(Math.random() * 600) + 1 ;
+				var yPosition = Math.floor(Math.random() * 600) + 1 ;
+				$("#fly").css({"left":xPosition , "top": yPosition});
+				
+				var xPosition2 = Math.floor(Math.random() * 600) + 1 ;
+				var yPosition2 = Math.floor(Math.random() * 600) + 1 ;
+				$("#fly2").css({"left":xPosition2 , "top": yPosition2});
+				
+				var xPosition3 = Math.floor(Math.random() * 600) + 1 ;
+				var yPosition3 = Math.floor(Math.random() * 600) + 1 ;
+				$("#fly3").css({"left":xPosition3 , "top": yPosition2});
+			}
+			
+			function clearStyles(){
+				flyCounter = 0;
+				flyText = "Caught \" " + flyCounter + " \" fly";
+				$('#lblCounter').text(flyText);
+			}
+			
+			$(document)
+				.on("click", "#startButton",function(){
+					$("#fly").css({"visibility":"visible"});
+					$("#fly2").css({"visibility":"visible"});
+					$("#fly3").css({"visibility":"visible"});
+					flyTimer = setInterval(function(){ 
+						moveFly();
+					}, flightSpeed);
+				})//End of startClick
+				.on("click", "#stopButton", function () {
+					$("#fly").css({"visibility":"hidden"});
+					$("#fly2").css({"visibility":"hidden"});
+					$("#fly3").css({"visibility":"hidden"});
+					clearInterval(flyTimer);
+					clearStyles();
+				})
+				.on("click", "#fly, #fly2, #fly3", function () {
+					++flyCounter;
+					
+					if(flyCounter > 1){
+						flyText = "Caught \" " + flyCounter + " \" flies";
+					}else {
+						flyText = "Caught \" " + flyCounter + " \" fly";
+					}
+					
+					if(flyCounter > 0){
+						slapSound.play();
+					}
+					$('#lblCounter').text(flyText);
+				})
+				.on("click", ".speed", function () {
+					clearInterval(flyTimer);
+					flightSpeed = $('input[type="radio"]:checked').val();
+					flyTimer = setInterval(function(){ 
+						moveFly();
+					}, flightSpeed);
+				});//End of stopClick
+			
+			
+		});//End of DocReady
+	</script>
+</head>
+
+<body>
+	<main class="mainContainer">
+		<section class="section1">
+			<div class="container1">
+				<div id="fly"><img src="images/fly.png"></div>
+				<div id="fly2"><img src="images/fly.png"></div>
+				<div id="fly3"><img src="images/fly.png"></div>
+				
+			</div>
+		</section>
+		<section class="section2">
+			<div class="controller">
+				<div class="buttonController">
+					<button class="button" id="startButton">Start</button>
+					<button class="button" id="stopButton">Stop</button><br>
+					<label id="lblCounter"></label>
+				</div>
+				<div class="speedController">
+					
+					<input class="speed" type='radio' name='choices' id="rdSlow" value='800' checked>
+					<label class="lblSpeed">Slow</label></br>
+					
+					<input class="speed" type='radio' name='choices' id="rdSlow" value='700'>
+					<label class="lblSpeed">Fast</label></br>
+					
+					<input class="speed" type='radio' name='choices' id="rdSlow" value='600'>
+					<label class="lblSpeed">Faster</label></br></br>
+					<label id="lblStatus"></label>
+				</div>
+			</div>
+		</section>
+		
+	</main> <!-- cd-main-content -->
+</body>
+</html>
+

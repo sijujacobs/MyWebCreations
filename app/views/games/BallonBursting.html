@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>BackgroudDesigns</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	
+	<style>
+	
+		.section1{
+			border:1px solid #000;
+			height: 500px;
+			width:500px;
+			overflow:hidden;
+		}
+		.container1 {
+		  max-width: 500px;
+		  margin: 0 auto;
+		  position:relative;
+		}
+		
+		
+		#redBaloon {
+			left:0;
+			background: red;
+			
+		}
+		#orangeBaloon {
+			left:55px;
+			background: orange;
+			
+		}
+		#yellowBaloon {
+			left:110px;
+			background: yellow;
+		}
+		#greenBaloon {
+			left:165px;
+			background: green;
+			
+		}
+		#blueBaloon {
+			left:220px;
+			background: blue;
+			
+		}
+		#indigoBaloon {
+			left:275px;
+			background: indigo;
+			
+		}
+		#violetBaloon {
+			left:330px;
+			background: violet;
+			
+		}
+
+		
+		.baloon{
+			width: 50px;
+			height: 50px;
+			-webkit-border-radius: 25px;
+			-moz-border-radius: 25px;
+			border-radius: 25px;
+			position:absolute;
+			top:-50px;
+		}
+		
+		
+		
+	</style>
+
+	<script>
+		$(document).ready(function ($) {
+			var redBaloonTimer, orangeBaloonTimer, yellowBaloonTimer, greenBaloonTimer, blueBaloonTimer, indigoBaloonTimer, violetBaloonTimer, maxHeight = 500;
+			function moveRedBaloons(direction){
+				if(direction == "down"){
+					var currentTop = $("#redBaloon").position().top;
+					currentTop += 1;
+					
+					if(currentTop < maxHeight){
+						console.log('1 move RedBaloons Top : ' + currentTop);
+						$("#redBaloon").css({"top": currentTop + "px"});
+					}else{
+						console.log('2 move RedBaloons Top : ' + currentTop);
+						$("#redBaloon").css({"top": "-30px"});
+					}
+				}
+			}
+			function moveOrangeBaloons(direction){
+				if(direction == "down"){
+					var currentTop = $("#orangeBaloon").position().top;
+					currentTop += 1;
+					if(currentTop < maxHeight){
+						$("#orangeBaloon").css({"top": currentTop + "px"});
+					}else{
+						$("#orangeBaloon").css({"top": "-30px"});
+					}
+				}
+			}
+			
+			function moveYellowBaloons(direction){
+				if(direction == "down"){
+					var currentTop = $("#yellowBaloon").position().top;
+					currentTop += 1;
+					if(currentTop < maxHeight){
+						$("#yellowBaloon").css({"top": currentTop + "px"});
+					}else{
+						$("#yellowBaloon").css({"top": "-30px"});
+					}
+				}
+			}
+			
+			function moveGreenBaloons(direction){
+				if(direction == "down"){
+					var currentTop = $("#greenBaloon").position().top;
+					currentTop += 1;
+					if(currentTop < maxHeight){
+						$("#greenBaloon").css({"top": currentTop + "px"});
+					}else{
+						$("#greenBaloon").css({"top": "-30px"});
+					}
+				}
+			}
+			function moveBlueBaloons(direction){
+				if(direction == "down"){
+					var currentTop = $("#blueBaloon").position().top;
+					currentTop += 1;
+					if(currentTop < maxHeight){
+						$("#blueBaloon").css({"top": currentTop + "px"});
+					}else{
+						$("#blueBaloon").css({"top": "-30px"});
+					}
+				}
+			}
+			
+			function moveIndigoBaloons(direction){
+				if(direction == "down"){
+					var currentTop = $("#indigoBaloon").position().top;
+					currentTop += 1;
+					if(currentTop < maxHeight){
+						$("#indigoBaloon").css({"top": currentTop + "px"});
+					}else{
+						$("#indigoBaloon").css({"top": "-30px"});
+					}
+				}
+			}
+			function moveVioletBaloons(direction){
+				if(direction == "down"){
+					var currentTop = $("#violetBaloon").position().top;
+					currentTop += 1;
+					if(currentTop < maxHeight){
+						$("#violetBaloon").css({"top": currentTop + "px"});
+					}else{
+						$("#violetBaloon").css({"top": "-30px"});
+					}
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+			function clearStyles(direction){
+				$("#redBaloon").css({"top": "0px"});
+			}
+			
+			
+			$(document).on("click", "#startButton",function(){
+				redBaloonTimer = setInterval(function(){ 
+					moveRedBaloons("down");
+				}, 20);
+				orangeBaloonTimer = setInterval(function(){ 
+					moveOrangeBaloons("down");
+				}, 17);
+				yellowBaloonTimer = setInterval(function(){ 
+					moveYellowBaloons("down");
+				}, 22);
+				
+				greenBaloonTimer = setInterval(function(){ 
+					moveGreenBaloons("down");
+				}, 18);
+				blueBaloonTimer = setInterval(function(){ 
+					moveBlueBaloons("down");
+				}, 21);
+				indigoBaloonTimer = setInterval(function(){ 
+					moveIndigoBaloons("down");
+				}, 19);
+				violetBaloonTimer = setInterval(function(){ 
+					moveVioletBaloons("down");
+				}, 16);
+				
+			});//End of startClick
+			
+			$(document).on("click", "#stopButton", function ($) {
+				clearInterval(redBaloonTimer);
+				clearInterval(orangeBaloonTimer);
+				clearInterval(yellowBaloonTimer);
+				clearInterval(greenBaloonTimer);
+				clearInterval(blueBaloonTimer);
+				clearInterval(indigoBaloonTimer);
+				clearInterval(violetBaloonTimer);
+				//clearStyles();
+			});//End of stopClick
+		});//End of DocReady
+	</script>
+</head>
+
+<body>
+	<main class="mainContainer">
+		<section class="section1">
+			<div class="container1">
+				<div id="redBaloon" class="baloon"></div>
+				<div id="orangeBaloon" class="baloon"></div>
+				<div id="yellowBaloon" class="baloon"></div>
+				<div id="greenBaloon" class="baloon"></div>
+				<div id="blueBaloon" class="baloon"></div>
+				<div id="indigoBaloon" class="baloon"></div>
+				<div id="violetBaloon" class="baloon"></div>
+			</div>
+		</section>
+		<button id="startButton">Start</button>
+		<button id="stopButton">Stop</button>
+	</main> <!-- cd-main-content -->
+</body>
+</html>
+

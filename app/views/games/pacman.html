@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Pacman</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<style>
+		#playArea{
+			height: 600px;
+			width: 600px;
+			background-color:#000;
+			float:left;
+		}
+
+		#snake{
+			position:absolute;
+			background-image: url("images/pacman.gif");
+			background-repeat: no-repeat;
+			width:50px;
+			height:50px;
+			z-index:2;
+		}
+		#snakeMouth{
+			width:15px;
+			height:15px;
+			position:relative;
+		}
+		
+		.enemy{
+			position:absolute;
+			width:50px;
+			height:50px;
+			z-index:2;
+			background-repeat: no-repeat;
+			left:250px;
+			top:250px;
+		}
+		#enemy1{
+			background-image: url("images/enemy3.png");
+		}
+		#enemy2{
+			background-image: url("images/enemy3.png");
+		}
+		#enemy3{
+			background-image: url("images/enemy3.png");
+		}
+
+		.topSnake {
+			-ms-transform: rotate(7deg); /* IE 9 */
+			-webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+			transform: rotate(270deg);
+		}
+		.downSnake {
+			-ms-transform: rotate(7deg); /* IE 9 */
+			-webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+			transform: rotate(90deg);
+		}
+		
+		.leftSnake {
+			-ms-transform: rotate(7deg); /* IE 9 */
+			-webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+			transform: rotate(180deg);
+		}
+		
+		
+		
+		.redCandy{
+			width :20px;
+			height:20px;
+			-webkit-border-radius: 25px;
+			-moz-border-radius: 25px;
+			position:absolute;
+			z-index:1;
+		}
+		
+		
+		.controlPanel{
+			float:left;
+			margin-left:30px;
+		}
+		
+		.button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			width : 100px;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-bottom : 20px;
+		}
+	</style>
+
+	<script>
+		$(document).ready(function ($) {
+			var snake, candy, snakeTimer, currentPosition, direction, leftPos, topPos, playAreaWidth = 560, playAreaHeight = 560, keyDownCounter = 0;
+			var swalloTimer, directionTimer, redCandyPosition, redCandyLeftMin, redCandyLeftMax, redCandyTopMin, redCandyTopMax, candyCounter = 0;
+			var startSound, moveSound, eatSound, deathSound;
+			//var food = ['apple.png', 'cherry.png', 'fly.png', '', '', '', '', '', '', '', '', '', ''];
+			var food = ['apple.png', 'cherry.png', 'carrot.png', 'lemon.png', 'pineapple.png', 'fruit1.png', 'veg1.png'];
+			var enemyTimer, enemy1Position,e1LeftPos, e1TopPos; 
+			init();
+			
+			function init(){
+				snake = $("#snake");
+				candy = $("#redCandy");
+				startSound = new Audio("audios/pacman_start.wav");
+				startSound.play();
+				moveSound = new Audio("audios/pacman_move.wav");
+				eatSound = new Audio("audios/pacman_eat.wav");
+				enemy1Position = $("#enemy1").position();
+				
+				setCandy();
+				clearInterval(enemyTimer);
+				moveEnemies($("#enemy1"));
+			}
+			
+			function setCandy(){
+				var xPosition = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+				var yPosition = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+				var foodIndex = Math.floor(Math.random() * 6) + 1  ;
+				var foodName =food[foodIndex];
+				$(candy).css({"left":xPosition , "top": yPosition, "background-image": "url('images/" + foodName + "')", "background-repeat": "no-repeat"});
+				setTimeout(function(){
+					  $(candy).show();
+					}, 1000);
+			}
+			function makeNewPosition($container) {
+				// Get viewport dimensions (remove the dimension of the div)
+				var h = $container.height() - 50;
+				var w = $container.width() - 50;
+				var nh = Math.floor(Math.random() * h);
+				var nw = Math.floor(Math.random() * w);
+				return [nh, nw];
+			}
+			
+			function moveEnemies($target) {
+				var newq = makeNewPosition($("#playArea"));
+				var oldq = $target.offset();
+				var speed = calcSpeed([oldq.top, oldq.left], newq);
+				$target.animate({
+					top: newq[0],
+					left: newq[1]
+				}, speed, function() {
+					moveEnemies($target);
+				});
+			};
+
+			function calcSpeed(prev, next) {
+				var x = Math.abs(prev[1] - next[1]);
+				var y = Math.abs(prev[0] - next[0]);
+				var greatest = x > y ? x : y;
+				var speedModifier = 0.1;
+				var speed = Math.ceil(greatest / speedModifier);
+				return speed;
+
+			}
+			
+			function moveEnemies11(){
+				var h = $("#playArea").height() - 50;
+				var w = $("#playArea").width() - 50;
+				
+				var nh = Math.floor(Math.random() * h);
+				var nw = Math.floor(Math.random() * w);
+				
+				e1LeftPos = nh + "px";
+				e1topPos = nw + "px";
+				console.log("moveEnemies : newq1 : " + e1topPos );
+				$("#enemy1").css({"left":e1LeftPos , "top": e1topPos});
+
+			}
+			
+			function swallowCandy(){
+				$(candy).hide();
+				++candyCounter;
+				$('#lblCounter').text(candyCounter);
+				setCandy();
+				eatSound.play();
+			}
+			
+			function moveSnake(keyCode){
+				currentPosition = $(snake).position();
+				leftPos = currentPosition.left;
+				topPos = currentPosition.top;
+				switch(keyCode) {
+					case 37:
+						leftPos -= 2;
+						if(leftPos > 10){
+							$(snake).css({"left": leftPos + "px"});
+							$(snake).removeClass().addClass("leftSnake");
+						}
+						break;
+					case 38:
+						topPos -= 2;
+						if(topPos > 10){
+							$(snake).css({"top": topPos + "px"});
+							$(snake).removeClass().addClass("topSnake");
+						}
+						break;
+					case 39:
+						leftPos += 2;
+						if(leftPos < playAreaWidth){
+							$(snake).css({"left": leftPos + "px"});
+							$(snake).removeClass();
+						}
+						break;
+					case 40:
+						topPos += 2;
+						if(topPos < playAreaHeight){
+							$(snake).css({"top": topPos + "px"});
+							$(snake).removeClass().addClass("downSnake");
+						}
+						break;
+					default:
+						keyCode = "WrongKey";
+				}
+				if(isTouchedFood()){
+					clearInterval(swalloTimer);
+					swalloTimer = setTimeout(function(){
+					  swallowCandy();
+					}, 20);
+				}
+				
+				if(isTouchedEnemy()){
+					deathSound = new Audio("audios/pacman_death.wav");
+					$("#snake").hide();
+					deathSound.play();
+					
+					clearInterval(directionTimer);
+					setTimeout(function(){
+					 $("#snake").show().removeClass().css({"left":"10px" , "top": "10px"});
+					}, 1000);
+				}
+			}
+			
+			function isTouchedFood() {
+				var touched = true;
+				var x1 = $("#snakeMouth").offset().left;
+				var y1 = $("#snakeMouth").offset().top;
+				var h1 = $("#snakeMouth").outerHeight(true);
+				var w1 = $("#snakeMouth").outerWidth(true);
+				var b1 = y1 + h1;
+				var r1 = x1 + w1;
+				var x2 = $("#redCandy").offset().left;
+				var y2 = $("#redCandy").offset().top;
+				var h2 = $("#redCandy").outerHeight(true);
+				var w2 = $("#redCandy").outerWidth(true);
+				var b2 = y2 + h2;
+				var r2 = x2 + w2;
+
+				if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+				touched = false;
+				}
+				return touched;
+			}
+			
+			function isTouchedEnemy() {
+				var touched = true;
+				var x1 = $("#snakeMouth").offset().left;
+				var y1 = $("#snakeMouth").offset().top;
+				var h1 = $("#snakeMouth").outerHeight(true);
+				var w1 = $("#snakeMouth").outerWidth(true);
+				var b1 = y1 + h1;
+				var r1 = x1 + w1;
+				var x2 = $("#enemy1").offset().left;
+				var y2 = $("#enemy1").offset().top;
+				var h2 = $("#enemy1").outerHeight(true);
+				var w2 = $("#enemy1").outerWidth(true);
+				var b2 = y2 + h2;
+				var r2 = x2 + w2;
+
+				if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+				touched = false;
+				}
+				return touched;
+			}
+			
+			$(document).on("click", "#stopButton",function(){
+				clearInterval(directionTimer);
+				moveSound.pause(); 
+			})//End of startClick
+			.on('keydown', function(event) {
+				if(keyDownCounter === 0){
+					++keyDownCounter;
+					
+					//console.log("keyDownCounter : " + keyDownCounter);
+					clearInterval(directionTimer);
+					directionTimer = setInterval(function(){ 
+						moveSnake(event.which);
+						moveSound.play();
+					}, 20);
+				}
+			})
+			.on('keyup', function(event) {
+				keyDownCounter = 0;
+			});
+		});//End of DocReady
+	</script>
+</head>
+
+<body>
+	<main class="mainContainer">
+		<div id="playArea">
+			<div id="snake" class="snakeHead"><div id="snakeMouth"></div></div>
+			<div id="redCandy" class="redCandy"></div>
+			<div id="enemy1" class="enemy"></div>
+
+		</div>
+		<div class="controlPanel">
+			<button class="button" id="startButton">Start</button>
+			<button class="button" id="stopButton">Stop</button><br>
+			<label id="lblCounter"></label><br>
+			<label id="lblPosition"></label><br>
+			<label id="lblSnakePosition"></label><br>.
+			<label id="lblEat"></label>
+			
+		</div>
+	</main> <!-- cd-main-content -->
+</body>
+</html>
+

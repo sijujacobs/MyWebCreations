@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>One Roof</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../css/aio.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<style>
+	
+	body{
+		background: #e8fbff;
+	}
+	
+	
+	#navMenuBar{
+		height:45px;
+		padding:2px;
+		box-sizing: border-box;
+		border:1px solid #94cefd;
+		border-radius: 5px;
+		margin:20px;
+		-webkit-box-shadow: 0px 0px 10px 2px #a7f6ff;
+		-moz-box-shadow: 0px 0px 10px 2px #a7f6ff;
+		box-shadow: 0px 0px 10px 2px #fff;
+	}
+	    
+	
+	#navMenuBar ul {
+		list-style-type:none;
+		margin:0;
+		padding:3px;
+		position: absolute;
+	}
+
+	#navMenuBar li {
+		display:inline-block;
+		float: left;
+		margin-right: 1px;
+	}
+
+	#navMenuBar li a {
+		display:block;
+		min-width:140px;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-weight:bold;
+		color: #000;
+		background: #e8fbff;
+		text-decoration: none;
+		border-radius: 5px;
+	}
+
+	#navMenuBar li:hover a {
+		background: #a7f6ff;
+		border:1px solid #94cefd;
+	}
+
+	#navMenuBar li:hover ul a {
+		background: #fff;
+		color: #000;
+		height: 40px;
+		line-height: 40px;
+		min-width:140px;
+	}
+
+	#navMenuBar li:hover ul a:hover {
+		background: #a7f6ff;
+		color: #000;
+	}
+
+	#navMenuBar li ul {
+		display: none;
+	}
+
+	#navMenuBar li ul li {
+		display: block;
+		float: none;
+	}
+
+	#navMenuBar li ul li a {
+		width: auto;
+		min-width: 100px;
+		padding: 0 20px;
+	}
+
+	#navMenuBar ul li:hover .dropDownMenu {
+		display: block;
+	}
+/*
+	ul li a:hover + .dropDownMenu, .dropDownMenu:hover {
+		display: block;
+	}
+*/
+	#toggleCheckBox, .toggleButton{
+		display: none;
+	}
+	
+	.showMenu{
+		display: block;
+	}
+	
+	#mainContainer{
+		height:auto;
+		margin:0 auto; /* this will center the page */
+		width:960px; /*  use your width here */
+		box-shadow: 6px 0 15px -6px rgba(31, 73, 125, 0.8), -6px 0 15px -6px rgba(31, 73, 125, 0.8);
+	}
+
+	.disableActiveLink {
+      pointer-events: none;
+      cursor: default;
+    }
+
+	
+	@media screen and (max-width : 760px){
+		#navMenuBar ul {
+			position: static;
+			display: none;
+		}
+
+		#navMenuBar li {
+			margin-bottom: 1px;
+		}
+
+		#navMenuBar ul li, li a {
+			width: 100%;
+		}
+
+		.toggleButton{
+			display:block;
+			float:right;
+			color:#FFF;
+			background: #2f3036;
+			width:30px;
+			height:30px;
+			border:1px solid #94cefd;
+			border-radius:5px;
+			padding:5px 3px 0 3px;
+			text-align:center;
+		}
+	}
+	</style>
+</head>
+<body>
+		<!-- -Navigation Menu-->
+		<div id="navMenuBar">
+			<label for="toggleCheckBox" class="toggleButton">☰</label>
+			<ul id="menu">
+				<li><a href="../../index.html">Home</a></li>
+				<li><a class="disableActiveLink" href="#">HTML/CSS</a></li>
+			</ul>
+		</div>
+		<!-- -END Navigation Menu -->
+		
+		<!-- -Main Container -->
+		<div id="mainContainer">
+		
+			<!-- - SEARCH -->
+			<div class="row">
+				<div class="col-12">
+					<div id="searchComponent">
+						<div class="searchWrapper">
+							<div class="searchBlock">
+								<input class="searchBox" type="text" name="keyword" placeholder="Search...">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--  END SEARCH-->
+			
+			<!--  Links -->
+			<div class="row">
+				<div class="col-3 borderBlock">
+					<h3>JS Tips</h3>
+					<ul id="componentList">
+						<li><a href="#waitForElement">Wait For Element</a></li>
+						<li><a href="#executionTime">Execution Time</a></li>
+						<li><a href="#tildeSymbol">Tilde(~) in Jquery</a></li>
+						<li><a href="#boxShadow">Box Shadow</a></li>
+						<li><a href="#ajaxComplete">Ajax Complete</a></li>
+						<li><a href="#dateDifference">Date Difference</a></li>
+						<li><a href="#onFunction">On Function</a></li>
+					</ul>
+				</div>
+				<div class="col-3">
+				<h3>Apps</h3>
+					<ul id="appList">
+						<li><a href="calendarApp.html">Calendar</a></li>
+					</ul>
+				</div>
+				<div class="col-3">
+				<h3>Components</h3>
+					<ul id="appList">
+						<li><a href="#sliderComponent">Slider</a></li>
+						<li><a href="#stickyComponent">Sticky Component</a></li>
+						<li><a href="#centerComponent">Center Component</a></li>
+					</ul>
+				</div>
+				<div class="col-3">
+				<h3>Games</h3>
+					<ul id="gamestList">
+						<li><a href="../../app/views/games/pacman.html">Pacmann</a></li>
+						<li><a href="../../app/views/games/fly.html">Fly</a></li>
+						<li><a href="../../app/views/games/BallonBursting.html">Ballon</a></li>
+					</ul>
+				</div>
+				
+			</div><!-- - END Links-->
+			
+
+			<!-- - LinkContents-->
+				<div class="row">
+	
+		<div class="col-12">
+			<div id="boxShadow" class="codeBlock">
+				<h3> Box Shadow</h3>
+				
+				<div id="boxShadowComponent">
+				</div>
+						  <pre>
+							<code>
+			-webkit-box-shadow: 21px 21px 32px -21px rgba(0,0,0,0.3);
+			-moz-box-shadow: 21px 21px 32px -21px rgba(0,0,0,0.3);
+			box-shadow: 21px 21px 32px -21px rgba(0,0,0,0.3);
+			Parameters are (Hor, Ver, Blur, Spread) 
+			
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+		
+		<div class="col-12">
+			<div id="ajaxComplete" class="codeBlock">
+				<h3> Ajax - Complete</h3>
+						  <pre>
+							<code>
+			$(document).ajaxComplete(function(event, xhr, settings) {
+				if (settings.url.indexOf("/tradein/ajax/deviceAppraise.jsp") > 0) {
+					console.log("-----------------Ajax Complete -------------------");
+				}
+			});
+
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+		
+		<div class="col-12">
+			<div id="tildeSymbol" class="codeBlock">
+				<h3> Tilde (~)Symbol in jQuery</h3>
+						  <pre>
+							<code>
+			var greeting = "Have a good day", num = -1;
+	  console.log("Greeting : " + greeting + ", Number : " + num);
+	  
+	  console.log("1. Index of GOOD is : " + greeting.indexOf('day'));
+	  console.log("2. Index of GOOD with ~ symbol is : " + ~greeting.indexOf('day'));
+	  
+	  console.log("3. Value of  num is : " + num);
+	  console.log("4. Value of  nu with ~ symbol is : " + ~num);
+	  if(num){
+		  console.log("Run campaign");
+	  }else{
+		  console.log("Do NOT");
+	  }
+
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+
+		<div class="col-12">
+			<div id="leftRightBoxShadow" class="codeBlock">
+				<h3> Box Shadow - Left & Right</h3>
+				
+				<div id="leftRightBoxShadowComponent">
+
+				</div>
+						  <pre>
+							<code>
+			box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+		
+			
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+		
+		
+		<div class="col-12">
+			<div id="SelectorTime" class="codeBlock">
+				<h3> Selector Time</h3>
+						  <pre>
+							<code>
+			console.time('SelectorTime');
+			$("#pageWrapper > section.section.group.hero-group > div > div > div.hero-wrapper");
+			console.timeEnd('SelectorTime');
+			console.log("-------------------------------------- ");
+			console.time('OptSelectorTime');
+			$("#pageWrapper div.hero-wrapper");
+			console.timeEnd('OptSelectorTime');
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+		<div class="col-12">
+			<div id="stickyComponent" class="codeBlock">
+				<h3> Sticky Component</h3>
+				<h4>Scroll to see the sticky element <em>sticking</em></h4>
+				<div class="extra"></div>
+				<br />
+				<div id="stickyWrapper">
+				  <div id="sticky">
+					sticky
+				  </div>
+				</div>
+				<br />
+				<div class="extra"></div>
+
+
+			</div>
+		</div>
+		
+		<div class="col-12">
+			<div id="dateDifference" class="codeBlock">
+				<h3> Date Difference</h3>
+				
+				<div id="dateDifferenceComponent">
+
+				</div>
+						  <pre>
+							<code>
+dateDifference_1: function(pDate){
+	var dayDifference = 0;
+	var today = new Date();
+	var podDateParts = pDate.split('/');
+	var podDate = new Date(podDateParts[0] + "/" +  podDateParts[1]+ "/" + podDateParts[2]);
+	var thisDate = new Date( today.getMonth() + "/" + today.getDate() + "/" + today.getFullYear());
+	dayDifference = (thisDate - podDate) / 1000 / 60 / 60 / 24;
+	//console.log("Difference between POD date and Today is : " + dayDifference);
+	return dayDifference;
+}
+
+
+dateDifference_2: function(pDate){
+	var podDateParts = pDate.split('/');
+	var newPodDateFormat = podDateParts[2] + "-" + podDateParts[0] + "-" + podDateParts[1];
+	var pDateMS=new Date(newPodDateFormat).getTime();
+	var todayDateMS = Date.now();
+	var dayMS= 1000 * 3600 * 24;
+	var timeDiff = todayDateMS - pDateMS;
+	var nbrDays = Math.ceil(timeDiff / dayMS)-1;
+	return nbrDays;
+}
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+		
+		<div class="col-12">
+			<div id="centerComponent" class="codeBlock">
+				<h3> Center Component</h3>
+				<div class="centerWrapper"> 
+					<div class="centerBlock"></div>
+				</div>
+						  <pre>
+							<code>
+			.centerWrapper {
+				display: table-cell;
+				vertical-align: middle;
+				border: 1px solid black;
+				height: 150px;
+				width: 5000px;
+			}
+
+			.center {
+				margin: auto;
+				background: red;
+				height: 20px;
+				width: 20px;
+			}
+							</code>
+						  </pre>
+						  
+			</div>
+		</div>
+		
+		<div class="col-12">
+			<div id="sliderComponent" class="codeBlock">
+				<h3> Slider component</h3>
+					<div id="sliderContainer">
+						<div class="prevButton"><</div>
+						<div class="slider">
+							<ul class="sliderWrapper">
+								<li class="slide">This is Slide one</li>
+								<li class="slide">This is Slide two</li>
+								<li class="slide">This is Slide three</li>
+								<li class="slide">This is Slide four</li>
+								<li class="slide">This is Slide five</li>
+								<li class="slide">This is Slide six</li>
+							</ul>  
+						</div>
+						
+						<div class="nextButton">></div>
+					</div>   
+			</div>
+		</div>
+		
+		
+		<div class="col-12">
+			<div id="waitForElement" class="codeBlock">
+				<h3> Wait for Elememt</h3>
+						  <pre>
+							<code>
+waitForElement:function(){
+	var thisDocument = this;
+	var timer;
+	var expectedElement = $('#demoIframe').contents().find('div#content-footer');
+	if($(expectedElement).length > 0){
+		clearTimeout(timer);
+	}else{
+		if(thisDocument.WAITCOUNT < 10){
+			timer = setTimeout(function(){ thisDocument.waitForElement();}, 500);
+			++thisDocument.WAITCOUNT;
+			console.log('WaitForElement :: exptedElemLen : ' + $(expectedElement).length);
+		}else{
+			clearTimeout(timer);
+		}
+	}
+}
+							</code>
+						  </pre>
+			</div>
+		</div>
+		<div class="col-12">
+			<div id="onFunction" class="codeBlock">
+				<h3> On Function</h3>
+						  <pre>
+							<code>
+$(document).on( "click", "#btnClick", function() {
+	waitForElement();
+});
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+				<div class="col-12">
+			<div id="executionTime" class="codeBlock">
+				<h3> Execution Time</h3>
+						  <pre>
+							<code>
+console.time('TimeTest1');
+$(".aDashboard-pod.a-table-cell div.o-pod");
+console.timeEnd('TimeTest1'); 
+
+console.time('TimeTest2');
+$(".aDashboard-pod.a-table-cell").find("div.o-pod");
+console.timeEnd('TimeTest2'); 
+							</code>
+						  </pre>
+			</div>
+		</div>
+		
+	</div>
+			<!-- -END LinkContents -->
+
+		</div>
+		<!-- -END Main Container -->
+		
+
+	
+	<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				$("#menu").toggleClass( "showMenu" );
+			});
+		})();
+	</script>
+	<script src="../../js/slider.js"></script>
+	<script src="../../js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <meta charset="utf-8" /> 
+    <title>Calendar Widget</title> 
+    <link rel="stylesheet" href="../../css/calendar.css" /> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<style>
+		body{
+
+		}
+		#mainContainer{
+			height:100%;
+			margin:0 auto; /* this will center the page */
+			padding:25px;
+			width:1000px; /*  use your width here */
+			 /*  box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 8px -4px rgba(31, 73, 125, 0.8); */
+		}
+		#calenderFrame{
+			width:80%;
+			border:1px solid #222;
+			border-radius: 5px;
+			margin:0 auto; /* this will center the page */
+			box-shadow: 0px 1px 20px 0px rgba(18, 73, 125, 0.8), 0px 0px 0px -20px rgba(31, 73, 125, 0.8);
+			padding:20px;
+
+		}
+		.header{
+			width: 90%;
+			text-align:center;
+			padding:5px 10px 5px 30px;
+			font-weight: bold;
+			font-size: 20px;
+		}
+		#calender{
+			padding: 15px;
+		}
+		.weekNameRow{
+			width:100%;
+			height:30px;
+		}
+		.weekNameRow td.dayNameCol{
+			font-weight: bold;
+			font-size: 16px;
+		}
+		
+		.dayLabel, .dayInput{
+			float:left;
+			clear:both;
+			width:50px;
+		}
+		
+		
+		.left{
+			float:left;
+			width: 20px;
+			height: 20px;
+			background: #222;
+			color: #fff;
+			cursor:pointer;
+		}
+		.right{
+			float:right;
+			
+		}
+		
+		.monthNavigator{
+			width: 25px;
+			height: 25px;
+			background: #222;
+			color: #fff;
+			cursor:pointer;
+		}
+		
+		td{
+			min-width:100px;
+			height:50px;
+			width:120px;
+			height: 50px;
+			text-align:center;
+		}
+		
+		td.today{
+			background-color:#ccc;
+			font-weight: bold;
+		}
+
+		.dayContent{
+			height:25px;
+			width:60%;
+			margin: 0 auto;
+		}
+		
+		td.d1ayCol:hover, .m1onthNavigator:hover{
+			-webkit-transform: scale(1.1);
+			-ms-transform: scale(1.1);
+			transform: scale(1.1);
+			box-shadow: 0px 1px 20px 0px rgba(18, 73, 125, 0.8), 0px 0px 0px -20px rgba(31, 73, 125, 0.8);
+			outline: thin solid #e0e0e0;
+			
+
+		}
+		
+		td.dayCol:hover, .monthNavigator:hover{
+			box-shadow: 0px 0px 15px #000000;
+			z-index: 2;
+			-webkit-transition: all 200ms ease-in;
+			-webkit-transform: scale(1.1);
+			-ms-transition: all 200ms ease-in;
+			-ms-transform: scale(1.1);   
+			-moz-transition: all 200ms ease-in;
+			-moz-transform: scale(1.1);
+			transition: all 200ms ease-in;
+			transform: scale(1.1);
+		}
+		
+		
+
+		.daysRow{
+			width:100%;
+			height:30px;
+			outline: thin solid #eee
+		}
+		
+		#days td{
+			width:150px;
+			text-align:center;
+		}
+		
+	</style>
+</head> 
+<body> 
+	<div id="mainContainer">
+
+		<div id="calenderFrame"> 
+			<table id="calender"> 
+				<tr>
+					<div class="header"> 
+						<span class="left monthNavigator" id="prev"> &lang; </span> 
+						<span class="monthYearLabel" id="calenderHeader"> December 2016 </span> 
+						<span class="right monthNavigator" id="next"> &rang; </span>
+					</div> 
+				</tr>
+				<tbody> 
+					<tr class="weekNameRow">
+						<td class="dayNameCol">Sunday</td> 
+						<td class="dayNameCol">Monday</td> 
+						<td class="dayNameCol">Tuesday</td> 
+						<td class="dayNameCol">Wednesday</td> 
+						<td class="dayNameCol">Thursday</td> 
+						<td class="dayNameCol">Friday</td> 
+						<td class="dayNameCol">Saturday</td>
+					</tr>
+					<tr class="dayRow">
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td>
+					</tr>
+					<tr class="dayRow">
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td>
+					</tr>
+					<tr class="dayRow">
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td>
+					</tr>
+					<tr class="dayRow">
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td>
+					</tr>
+					<tr class="dayRow">
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td>
+					</tr>
+					<tr class="dayRow">
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td> 
+						<td class="dayCol"></td>
+					</tr>
+				</tbody> 
+				
+			</table> 
+			<div id="cal-frame"> 
+
+			</div> 
+		</div>
+	</div>
+		<script src="../../js/calendar.js"></script>
+</body> 
+</html>

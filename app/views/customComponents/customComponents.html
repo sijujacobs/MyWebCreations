@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Web Creations</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     
+	<style type="text/css">
+
+	</style>
+	 
+</head>
+<body>
+    <div id="mainContainer">
+        <h1 class="heroHeader">Dynamic Accordion</h1>
+
+<hr>
+        <div ng-app="customDirectives">
+            <div ng-controller="CustomDirectivesController">       
+                <div custom-collapse ng-model="collapseData" collapse-panel-id="collapse-panel" collapse-panel-body-id="collapse-panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+<hr>
+<hr>
+<div class="panel-group" id="{{panelId}}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#{{panelId}}" href="#{{panelBaseId}}-1">pPanel 1</a>
+            </h4>
+        </div>
+        <div id="{{panelBaseId}}-1" class="panel-collapse collapse">
+            <div class="panel-body">The Quick Brown Fox Jumps Over The Lazy Dog.</div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+             <a data-toggle="collapse" data-parent="#{{panelId}}" href="#{{panelBaseId}}-2">pPanel 2</a>
+            </h4>
+        </div>
+        <div id="{{panelBaseId}}-2" class="panel-collapse collapse">
+            <div class="panel-body">The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog</div>
+        </div>
+    </div>
+</div>
+
+	<script>
+		(function(){
+			
+		})();
+	</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+	  <script src="../../views/customComponents/customComponents.js"></script>
+	 
+</body>
+</html>
