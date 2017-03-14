@@ -10,25 +10,31 @@
 	</style>
 </head>
 <body>
-		<!-- ---------------------------------Main Container -->
+		<!-- Main Container -->
 <div id="mainContainer">
 	
 	<div id="navMenuBar">
 		<label for="toggleCheckBox" class="toggleButton">☰</label>
 		<ul id="menu">
-			<li><a href="#">Home</a></li>
+			<li><a href="#">HOME</a></li>
 			<li><a href="app/views/jstips.html">HTML/CSS</a></li>
-			<li><a class="dropDownHeader" href="app/views/crud.html">Crud</a></li>
+			<li><a class="dropDownHeader" href="app/views/crud.html">CRUD</a></li>
 			<li>
-				<a class="dropDownHeader" href="#">Server</a>
+				<a class="dropDownHeader" href="#">SERVER</a>
 				<ul class="dropDownMenu">
 					<li><a href="#">NodeJS</a></li>
 					<li><a href="#">PHP</a></li>
-					<li><a href="#">Java</a></li>
 					<li><a href="#">.Net</a></li>
 				</ul>
 			</li>
-			<li><a ng-click="showMemberLoginModal()" id="loginButton" href="#">Login</a></li>
+			<li>
+				<a class="dropDownHeader" href="#">DATABASE</a>
+				<ul class="dropDownMenu">
+					<li><a href="#">MySql</a></li>
+					<li><a href="#">MS SQL</a></li>
+					<li><a href="#">MongoDB</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 	<div class="heroBanner">
