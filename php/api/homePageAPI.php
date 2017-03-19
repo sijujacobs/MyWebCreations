@@ -2,23 +2,23 @@
  session_start(); 
 //include dirname(__FILE__) . '/../../dbConnection.php';
 
-/* SERVER MCM CREDENTIALS    */
+/* SERVER MCM CREDENTIALS    
 
     $servername     = 'localhost';
     $user           = 'malanuhe_admin';
     $password       = 'Edmonton1234';
     $db             = 'malanuhe_mcmdb';
     $port           = 3306;
+*/
 
-
-/*   LOCAL MCM CREDENTIALS 
+/*   LOCAL MCM CREDENTIALS */
 
     $servername     = 'localhost';
     $user           = 'root';
     $password       = 'root';
     $db             = 'mywebcreationsdb';
     $port           = 8889;
-*/
+
 
     // Create connection
     $conn = new mysqli($servername, $user, $password, $db);

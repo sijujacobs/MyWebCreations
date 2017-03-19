@@ -15,7 +15,7 @@ App.controller('memberController', ['$scope', 'dataFactory', function ($scope, d
     $scope.isButtonDisabled = true;
         
 
-    console.log("mcm-Web::memberController---555--------");
+    //console.log("mcm-Web::memberController---555--------");
     $scope.init= function(){
         getMembers();
     }
@@ -270,7 +270,7 @@ App.directive('ngConfirmClick', [function(){
         scope.dialogStyle = {};
         if (attrs.width)
           scope.dialogStyle.width = attrs.width;
-          console.log("attrs.width: " + attrs.width);
+          //console.log("attrs.width: " + attrs.width);
         if (attrs.height)
           scope.dialogStyle.height = attrs.height;
       },

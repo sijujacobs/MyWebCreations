@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Fruits</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+</head>
+<body>
+	<!-- -Main Container -->
+	<div class="container" ng-controller="fruitController">
+		<h2>Animate</h2>
+		<div class="row" >
+			<label id="marqueeLbl">siju jacob</label><label id="greetingLbl"></label>
+		</div>
+		<h2>Fruits</h2>
+		<div class="row" >
+			<table  class="table table-bordered table-responsive" ng-init="getFruits()">
+				<tr>
+					<th>Symbol</th>
+					<th>TxnId</th>
+					<th>Action</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>MarketValue</th>
+				</tr>
+				<tr ng-repeat="fruit in fruits| orderBy: ['Symbol', 'Action']">
+					<td>{{fruit.Symbol}}</td>
+					<td>{{fruit.TxnId}}</td>
+					<td>{{fruit.Action}}</td>
+					<td>{{fruit.Quantity}}</td>
+					<td>{{fruit.Price}}</td>
+					<td>{{fruit.MarketValue}}</td>
+				</tr>
+			</table>
+
+			<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">Fruits trade details</div>
+					<div class="panel-body">
+						<p>Total Fruits Bought : <span class="result">{{totalFruitBought}}</span> --> Amount <span>{{totalBuyAmount}} </span></p>
+						<p>Total Fruits Sold : <span class="result">{{totalFruitSold}}</span> --> Amount <span>{{totalSellAmount}} </span></p>
+						<p>Profit/Loss : <span class="result">{{profitLoss}}</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+			<!--  
+			<div class="gridStyle" ng-grid="gridOptions"></div>
+			-->
+	</div><!-- END Main Container -->
+		<!-- JQuery is used only for JS experiments in Common.js -->
+		<script   src="https://code.jquery.com/jquery-3.2.0.min.js"   integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="   crossorigin="anonymous"></script>
+		<script src="app/common/commonFile.js"></script>
+		<!-- -->
+
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+	  	<script src="app/fruitApp.js"></script>
+	  	<script src="app/controller/fruitController.js"></script>
+	  	<script src="app/services/fruitFactory.js"></script>
+</body>
+</html>

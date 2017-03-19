@@ -70,8 +70,15 @@
 	<script>
 		(function(){
 			$(document).on( "click", ".toggleButton", function() {
-				console.log("togglebutton clicked----");
-				$("#menu").toggleClass( "showMenu" );
+				console.log("Toggle click------- Menu : " + $("#menu").css('display') );
+				//$("#menu").toggleClass( "showMenu" );
+				if($("#menu").css('display') == 'none'){
+					console.log("Menu Visible---Make block-");
+					$("#menu").css({"display":"block"});
+				}else{
+					console.log("Menu Visible--Make none--");
+					$("#menu").css({"display":"none"})
+				}
 			});
 		})();
 	</script>

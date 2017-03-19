@@ -2,7 +2,7 @@
  session_start(); 
 //include dirname(__FILE__) . '/../../dbConnection.php';
 
-/* WEBCREATION CREDENTIALS */
+/* WEBCREATION CREDENTIALS 
     $servername     = 'localhost';
     $user           = 'myweb6at';
     $password       = 'siju04@$Create';
@@ -10,7 +10,7 @@
     $host           = 'localhost';
     $port           = 3306;
 
-
+*/
 
 /*  MCM CREDENTIALS 
     $servername     = 'localhost';
@@ -20,13 +20,13 @@
     $port           = 3306;
 
  */  
-/*   LOCAL MCM CREDENTIALS 
+/*   LOCAL MCM CREDENTIALS */
     $servername     = 'localhost';
     $user           = 'root';
     $password       = 'root';
     $db             = 'mywebcreationsdb';
     $port           = 8889;
-*/
+
     // Create connection
     $conn = new mysqli($servername, $user, $password, $db);
     //mysqli_set_charset($conn,'utf8');

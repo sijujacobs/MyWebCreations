@@ -269,6 +269,19 @@
 		  console.log("Do NOT");
 	  }
 
+	  var a = "Hello Baby";
+
+~a.indexOf("Ba");         // -7   -> truthy
+if (~a.indexOf("Ba")) {   // true
+    // found it
+}
+
+~a.indexOf("aB");         // 0    -> falsy
+!~a.indexOf("aB");        // true
+if (!~a.indexOf( "aB" )) {  // true
+    // not found
+}
+
 							</code>
 						  </pre>
 			</div>

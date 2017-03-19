@@ -46,6 +46,7 @@
 		margin:0;
 		padding:3px;
 		position: absolute;
+		z-index: 10;
 	}
 
 	#navMenuBar li {
@@ -277,8 +278,8 @@
 		}
 		
 		#navMenuBar ul {
-			position: static;
 			display: none;
+			    width: 80%;
 		}
 
 		#navMenuBar li {

@@ -7,8 +7,6 @@ App.factory('dataFactory', ['$http', function($http) {
     var dataFactory = {};
 
     dataFactory.getMembers = function () {
-         console.log("mcm-Web::memberFactory---getMembers--------");
-
         return $http.get(urlBase+ '/?functionName=GET_MEMBERS');
     };
 
@@ -34,7 +32,6 @@ App.factory('dataFactory', ['$http', function($http) {
         console.log("mcm-Web::memberFactory---verifyMember--------");
         return $http.post(urlBase + '/?functionName=VERIFY_MEMBER', member);
     };
-    
 
     return dataFactory;
 }]);
