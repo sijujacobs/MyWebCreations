@@ -118,6 +118,13 @@
       pointer-events: none;
       cursor: default;
     }	
+
+	.boxList a{
+		color:#ccc;
+		padding: 5px;
+		line-height: 1.4rem;
+
+	}
 	
     /*   ---------------------- MODAL --------------------------------  */
   

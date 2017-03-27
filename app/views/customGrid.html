@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>My Web Creations</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../css/myWebCreationStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	   <style>
+
+    .customGrid, .typicalGrid{
+        width:55%;
+        border:1px solid #48acb7;
+        border-radius: 5px;
+    }
+
+    .gridTitle{
+        color:#fff;
+        background-color: #48acb7;
+        padding-left: 20px;
+    }
+    .groupHeader{
+        background-color: #7ebdcc;
+        color:black;
+        width: 100%;
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px 0 10px 20px;
+        box-sizing: border-box;
+    }
+    .subGroupHeader{
+        padding-left: 75px;
+        border-bottom: 1px solid #c4d8ff;
+        display: block;
+        background-color: #c4d8ff;
+    }
+    .tradeDetails{
+        padding-left: 200px;
+        border-bottom: 1px solid #c4d8ff;
+    }
+    .dataHeader{
+        display: inline-block;
+        width:15%;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+
+    .dataRow{
+        padding: 5px;
+        border:1px solid #c4d8ff;
+        padding-left: 50px;
+    }
+     .dataCol{
+         display: inline-block;
+         padding: 2px 20px 2px 5px;
+         border-left:1px solid #c4d8ff;
+         border-right:1px solid #fff;
+         width:20%;
+     }
+     li.dataRow{
+         list-style-type: none;
+         margin-left: -40px;
+     }
+
+    </style>
+</head>
+<body>
+	<!-- -Main Container -->
+	<div id="mainContainer" ng-controller="customGridController" ng-init="groupBy('name')">
+		<div id="navMenuBar">
+			<label for="toggleCheckBox" class="toggleButton">☰</label>
+			<ul id="menu">
+				<li><a href="../../index.html">HOME</a></li>
+				<li><a href="../../app/views/jstips.html">HTML/CSS</a></li>
+				<li><a href="../../app/views/crud.html">CRUD</a></li>
+				<li><a class="disableActiveLink" href="../../app/views/customGrid.html">ANGULARJS</a></li>
+			</ul>
+		</div>
+
+			<h2>AngularJS Directive Tutorial -  Grid with Multiple Grouping</h2>
+            <h4>Custom Grid - Multiple Grouping </h4>
+            <custom-grid source-data="groups" group-data="name-state"></custom-grid>
+            <hr>
+            <img ng-src="../../images/customGridData.png">
+            <h4>Typical Grid - Multiple Grouping </h4>
+            <button ng-click="groupBy('name')">Fruit</button> -
+            <button ng-click="groupBy('state')">State</button>
+
+            <div class="typicalGrid">
+                <div class="gridTitle">
+                    <div class="dataHeader">Fruit</div>
+                    <div class="dataHeader">State</div>
+                    <div class="dataHeader">Action</div>
+                    <div class="dataHeader">Quantity</div>
+                    <div class="dataHeader">Price</div>
+                </div>
+                <div ng-repeat="g in groups">
+                    <span class="groupHeader"> {{g.name}}</span>
+                    <ul>
+                        <li class="dataRow" ng-repeat="f in g.fruits">
+                            <div><div class="dataCol">{{f.state}}</div>
+                            <div class="dataCol">{{f.action}}</div>
+                            <div class="dataCol">{{f.quantity}}</div>
+                            <div class="dataCol">{{f.price}}</div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+		<div class="footer"></div><!-- END footer -->
+	</div><!-- END Main Container -->
+	<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				console.log("togglebutton clicked----");
+				$("#menu").toggleClass( "showMenu" );
+			});
+		})();
+	</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+
+    <script src="../../app/app.js"></script>
+    <script src="../../app/controller/customGridController.js"></script>
+    <script src="../../app/services/fruitFactory.js"></script>
+    <script src="../../app/directives/gridDirective.js"></script>
+
+
+</body>
+</html>
