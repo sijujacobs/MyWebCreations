@@ -11,7 +11,7 @@
 	   <style>
 
     .customGrid, .typicalGrid{
-        width:55%;
+        width:70%;
         border:1px solid #48acb7;
         border-radius: 5px;
     }
@@ -51,20 +51,23 @@
 
 
     .dataRow{
-        padding: 5px;
-        border:1px solid #c4d8ff;
-        padding-left: 50px;
+        border-bottom:1px solid #c4d8ff;
+        padding-left: 100px;
     }
      .dataCol{
          display: inline-block;
          padding: 2px 20px 2px 5px;
          border-left:1px solid #c4d8ff;
-         border-right:1px solid #fff;
-         width:20%;
+         width:23%;
      }
      li.dataRow{
          list-style-type: none;
          margin-left: -40px;
+     }
+
+     li.dataRow:hover, .tradeDetails:hover{
+        color:#333;
+        background-color: #7cb2c3;
      }
 
     </style>
@@ -84,16 +87,19 @@
 
 			<h2>AngularJS Directive Tutorial -  Grid with Multiple Grouping</h2>
             <h4>Custom Grid - Multiple Grouping </h4>
+
+             <hr>
+            <img width="70%" height="auto" ng-src="../../images/customGridData.png">
+             <hr>
             <custom-grid source-data="groups" group-data="name-state"></custom-grid>
             <hr>
-            <img ng-src="../../images/customGridData.png">
             <h4>Typical Grid - Multiple Grouping </h4>
-            <button ng-click="groupBy('name')">Fruit</button> -
+            <button ng-click="groupBy('name')">Device</button> -
             <button ng-click="groupBy('state')">State</button>
-
+             <hr>
             <div class="typicalGrid">
                 <div class="gridTitle">
-                    <div class="dataHeader">Fruit</div>
+                    <div class="dataHeader">Device</div>
                     <div class="dataHeader">State</div>
                     <div class="dataHeader">Action</div>
                     <div class="dataHeader">Quantity</div>

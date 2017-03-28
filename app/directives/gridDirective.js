@@ -7,7 +7,7 @@ App.directive('customGrid', function() {
         },
         restrict: 'E',
         template: '<div class="customGrid"><div class="gridTitle">'
-                    +'<div class="dataHeader">Fruit</div>'
+                    +'<div class="dataHeader">Device</div>'
                     +'<div class="dataHeader">State</div>'
                     +'<div class="dataHeader">Action</div>'
                     +'<div class="dataHeader">Quantity</div>'
