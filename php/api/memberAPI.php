@@ -1,25 +1,6 @@
 <?php
  session_start(); 
-//include dirname(__FILE__) . '/../../dbConnection.php';
-
-/* WEBCREATION CREDENTIALS 
-    $servername     = 'localhost';
-    $user           = 'myweb6at';
-    $password       = 'siju04@$Create';
-    $db             = 'myweb6at_memberdb';
-    $host           = 'localhost';
-    $port           = 3306;
-
-*/
-
-/*  MCM CREDENTIALS 
-    $servername     = 'localhost';
-    $user           = 'malanuhe_admin';
-    $password       = 'Edmonton1234';
-    $db             = 'malanuhe_mcmdb';
-    $port           = 3306;
-
- */  
+ 
 /*   LOCAL MCM CREDENTIALS */
     $servername     = 'localhost';
     $user           = 'root';

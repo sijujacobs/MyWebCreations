@@ -1,13 +1,4 @@
 <?php
-/*
-SERVER MCM CREDENTIALS
-
-    $servername     = 'localhost';
-    $user           = 'malanuhe_admin';
-    $password       = 'Edmonton1234';
-    $db             = 'malanuhe_mcmdb';
-    $port           = 3306;
-*/
 
 
 /*   LOCAL MyWEB-MCM CREDENTIALS */
@@ -23,13 +14,5 @@ SERVER MCM CREDENTIALS
       die("Connection failed: " . $conn->connect_error);
     }
 echo "Connected successfully";
-/*WEBCREATION CREDENTIALS
-    $servername     = 'localhost';
-    $user           = 'myweb6at';
-    $password       = 'siju04@$Create';
-    $db             = 'myweb6at_memberdb';
-    $host           = 'localhost';
-    $port           = 3306;
 
-*/
 ?>
