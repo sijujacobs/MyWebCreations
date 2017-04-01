@@ -1,22 +1,8 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
-	<meta charset="UTF-8">
-	<title>My Web Creations</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../../css/myWebCreationStyle.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	   <style>
-
-    .gridContainer {
-		position: relative;
-		padding: 5px;
-		width: 95%;
-		margin: auto;
-		margin-top: 40px;
-	}
 
     .customGrid, .typicalGrid{
         width:70%;
@@ -83,30 +69,9 @@
 <body>
 	<!-- -Main Container -->
 	<div id="mainContainer" ng-controller="customGridController" ng-init="groupBy('name')">
-		<div id="navMenuBar">
-			<label for="toggleCheckBox" class="toggleButton">☰</label>
-			<ul id="menu">
-				<li><a href="../../index.html">HOME</a></li>
-				<li><a href="../../app/views/jstips.html">HTML/CSS</a></li>
-				<li>
-					<a class="dropDownHeader" href="#">ANGULARJS</a>
-					<ul class="dropDownMenu">
-						<li><a href="../../app/views/crud.html">CRUD</a></li>
-						<li><a class="disableActiveLink" href="../../app/views/customGrid.html">GRID</a></li>
-						<li><a href="../../app/views/slider.html">SLIDER</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-        <div class="gridContainer">
-			<h2>AngularJS Directive -  Grid with Multiple Grouping</h2>
+			<h2>AngularJS Directive Tutorial -  Grid with Multiple Grouping</h2>
             <h4>Custom Grid - Multiple Grouping </h4>
-            <h5>Topics </h5>
-				<ul>
-					<li>isolated scope</li>
-					<li>template</li>
-                    <li>Multiple grouping</li>
-				</ul>
+
              <hr>
             <img width="70%" height="auto" ng-src="../../images/customGridData.png">
              <hr>
@@ -136,9 +101,7 @@
                     </ul>
                 </div>
             </div>
-            </div>
 
-		<div class="footer"></div><!-- END footer -->
 	</div><!-- END Main Container -->
 	<script>
 		(function(){

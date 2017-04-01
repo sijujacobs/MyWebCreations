@@ -1,0 +1,28 @@
+<h4>Angular-choice</h4>
+<div ng-app="app" ng-controller="Ctrl">
+    
+    <h4>Hello, {{user.name}}!</h4><p>Your preferred Engine is:
+                <input class="form-control input-sm required" type="text" name="username" ng-model="user.preferredSearchEngine" placeholder="Enter your favorite engine or pick below! [google, bing or old school]" required />.</p>'
+    <p x-value="'old school'" x-choice="user.preferredSearchEngine" class="choice lead text-center">
+        Yellow Pages
+    </p>
+    <div class="row">
+        <div x-value="'google'" x-choice="user.preferredSearchEngine" class="choice text-center col-sm-6">
+            <img src="https://www.google.com/images/srpr/logo11w.png" />
+        </div>
+        <div x-value="'bing'" x-choice="user.preferredSearchEngine" class="choice text-center col-sm-6">
+            <img src="http://rack.1.mshcdn.com/media/ZgkyMDEzLzA5LzE2L2JjL0Jpbmdsb2dvb3JhLmFkYjJkLnBuZwpwCXRodW1iCTEyMDB4OTYwMD4/996d9598/35b/Bing-logo-orange-RGB.png" />
+        </div>
+    </div>
+    <p>Do you like Sushi?   
+        <input type="checkbox" name="sushi" ng-model="user.likesSushi" /></p>
+    <div class="row">
+        <p x-value="likeSushi.yes" x-choice="user.likesSushi" class="choice text-center col-sm-4 lead">YES</p>
+        <p x-value="likeSushi.no" x-choice="user.likesSushi" class="choice text-center col-sm-4 lead">NO</p>
+        <p x-value="null" x-choice="user.likesSushi" class="choice text-center col-sm-4 lead">DUNNO</p>
+    </div>
+    
+<div class="debug">
+    {{ user | json }}
+</div>
+</div>

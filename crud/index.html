@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>New Design</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+   <link rel="stylesheet" href="css/myWebCreationStyle.css">
+	<style>
+	
+	
+	</style>
+</head>
+<body>
+
+		<!-- ---------------------------------Main Container------------------------ -->
+		<div id="mainContainer">
+					
+			<div id="navMenuBar">
+				<label for="toggleCheckBox" class="toggleButton">☰</label>
+				<ul id="menu">
+					<li><a href="#">Home</a></li>
+					<li><a href="jstips.html">HTML/CSS</a></li>
+					<li><a class="dropDownHeader" href="crud.html">CRUD</a></li>
+					<li>
+						<a class="dropDownHeader" href="#">Server</a>
+						<ul class="dropDownMenu">
+							<li><a href="#">NodeJS</a></li>
+							<li><a href="#">PHP</a></li>
+							<li><a href="#">Java</a></li>
+							<li><a href="#">.Net</a></li>
+						</ul>
+					</li>
+					<li>
+						<a class="dropDownHeader" href="#">Database</a>
+						<ul class="dropDownMenu">
+							<li><a href="#">MongoDB</a></li>
+							<li><a href="#">Cassandra </a></li>
+							<li><a href="#">MySql</a></li>
+							<li><a href="#">Oracle</a></li>
+							
+						</ul>
+					</li>
+          <li><a id="loginButton" href="#">LOGIN</a></li>
+				</ul>
+			</div>
+		
+			<div class="heroBanner">
+				<div class="heroContainer">
+					<h1 class="heroHeader">My Web creations</h1>
+				</div>
+			</div><!-- END Main Container -->
+			
+			<div class="contentRow">
+				<div class="col-m-3"><div class="contentHeader"><p>Apps</p></div></div>
+				<div class="col-m-3"><div class="contentHeader"><p>Components</p></div></div>
+				<div class="col-m-3"><div class="contentHeader"><p>Docs</p></div></div>
+			</div>
+
+			
+
+          <div id="loginModal" class="modalWindow">
+        <div class="modalContent">
+        <div class="modalHeader">
+          <span class="closeButton">&times;</span>
+          <span>Sign In</span>
+        </div>
+        <div class="modalBody">
+          <form action="action_page.php">
+            <label for="fname">Username</label>
+            <input class="inputField" type="text" id="fname" name="firstname">
+
+            <label for="lname">Password</label>
+            <input class="inputField" type="text" id="lname" name="lastname">
+
+            <input class="inputButton" type="submit" value="Submit">
+          </form>
+        </div>
+        </div>
+      </div><!-- END modal -->
+
+			<div class="footer"><div class="contentHeader"></div></div><!-- END Main Container -->
+			
+		</div><!-- END Main Container -->
+	<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				console.log("togglebutton clicked----");
+				$("#menu").toggleClass( "showMenu" );
+			});
+
+      var modal = document.getElementById('loginModal');
+      var btn = document.getElementById("loginButton");
+      var closeButton = document.getElementsByClassName("closeButton")[0];
+
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      closeButton.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+		})();
+	</script>
+</body>
+</html>

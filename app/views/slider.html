@@ -9,9 +9,52 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<style>
 
-	img {
-		width: 600px;
+	.gridContainer {
+		position: relative;
+		padding: 5px;
+		width: 95%;
+		margin: auto;
+		margin-top: 40px;
+	}
+
+	img.sliderImage {
+		width: 450px;
 		height: 200px;
+	}
+
+	.slider {
+		position: relative;
+		padding: 5px;
+		width: 610px;
+		margin: auto;
+		margin-top: 40px;
+	}
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 60px;
+		box-shadow: 0px 0px 15px #999;
+	}
+
+	.arrows {
+		position: absolute;
+		top: 10px;
+		right: 20px;
+	}
+
+	.arrowsLeftContainer{
+		position: absolute;
+		top: 60px;
+		left: 0px;
+	}
+	.arrowsRightContainer{
+		position: absolute;
+		top: 60px;
+		right:40px
+	}
+
+	.arrows img {
+	height: 30px;
 	}
 	</style>
 </head>
@@ -23,15 +66,27 @@
 			<ul id="menu">
 				<li><a href="../../index.html">HOME</a></li>
 				<li><a href="../../app/views/jstips.html">HTML/CSS</a></li>
-				<li><a class="disableActiveLink" href="../../app/views/crud.html">CRUD</a></li>
-				<li><a href="../../app/views/customGrid.html">ANGULARJS</a></li>
-				<li><a ng-click="showMemberLoginModal()" id="loginButton" href="#">LOGIN</a></li>
+				<li>
+					<a class="dropDownHeader" href="#">ANGULARJS</a>
+					<ul class="dropDownMenu">
+						<li><a href="../../app/views/crud.html">CRUD</a></li>
+						<li><a href="../../app/views/customGrid.html">GRID</a></li>
+						<li><a  class="disableActiveLink" href="../../app/views/slider.html">SLIDER</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
-		<div class="container" ng-controller="sliderController">
-			<h3>Tutorial - AngularJS Slider</h3>
+		<div class="sliderContainer" ng-controller="sliderController">
 
-			 <custom-slider images="images"> <custom-slider/>
+				<h3>Tutorial - AngularJS Slider</h3>
+				<h5>Topics </h5>
+				<ul>
+					<li>$timeout service</li>
+					<li>$destroy</li>
+				</ul>
+
+				<custom-slider images="images"> <custom-slider/>
+
 		</div>
 		<div class="footer"></div>
 		

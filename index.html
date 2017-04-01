@@ -13,13 +13,21 @@
 <body>
 		<!-- Main Container -->
 <div id="mainContainer">
+	
 	<div id="navMenuBar">
 		<label for="toggleCheckBox" class="toggleButton">☰</label>
 		<ul id="menu">
-			<li><a href="#">HOME</a></li>
+			<li><a  class="disableActiveLink" href="#">HOME</a></li>
 			<li><a href="app/views/jstips.html">HTML/CSS</a></li>
-			<li><a class="dropDownHeader" href="app/views/crud.html">CRUD</a></li>
-			<li><a class="dropDownHeader" href="angular.html">ANGULARJS</a></li>
+			<li>
+				<a class="dropDownHeader" href="#">ANGULARJS</a>
+				<ul class="dropDownMenu">
+					<li><a href="app/views/crud.html">CRUD</a></li>
+					<li><a href="app/views/customGrid.html">GRID</a></li>
+					<li><a href="app/views/slider.html">SLIDER</a></li>
+				</ul>
+			</li>
+			
 		</ul>
 	</div>
 	<div class="heroBanner">

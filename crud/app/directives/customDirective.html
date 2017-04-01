@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="myApp"  ng-controller="myController">
+
+<w3-test-directive></w3-test-directive>
+<my-directive></my-directive>
+<hr>
+<div class="movie">
+    <div class="title">
+        Movie Title
+    </div>
+    <div class="movie">
+        Movie name
+    </div>
+</div>
+
+<hr>
+	<div ng-repeat="movie in movies">
+		<my-movie title="{{movie}}">
+		    Movie Title :  
+		</my-movie>
+    </div>
+
+
+<script>
+var myApp = angular.module("myApp", []);
+myApp.controller('myController', function($scope) {
+    $scope.movies = ['Ice Age', 'Frozen'];
+});
+
+myApp.directive("w3TestDirective", function() {
+    return {
+        template : "<h1>Made by a directive!</h1>"
+    };
+});
+
+myApp.directive('myDirective', function() {
+  return {
+      restrict: 'E',
+      template: '<h1>I made a directive </h1>'
+  };
+});
+
+myApp.directive('myMovie', function() {
+  return {
+    restrict: 'E',
+    transclude: 'true',
+    template: '<span ng-transclude></span>',
+    link: function(scope, element, attr){
+          element.append("<strong>"+attr.title+"</strong>");
+    }
+  };
+});
+</script>
+
+</body>
+</html>
