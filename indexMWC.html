@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Web Creations</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+   <link rel="stylesheet" href="css/myWebCreationStyle.css">
+	<style>
+
+	</style>
+</head>
+<body>
+		<!-- Main Container -->
+<div id="mainContainer">
+	
+	<div id="navMenuBar">
+		<label for="toggleCheckBox" class="toggleButton">☰</label>
+		<ul id="menu">
+			<li><a  class="disableActiveLink" href="#">HOME</a></li>
+			<li><a href="app/views/jstips.html">HTML/CSS</a></li>
+			<li>
+				<a class="dropDownHeader" href="#">ANGULARJS</a>
+				<ul class="dropDownMenu">
+					<li><a href="app/views/crud.html">CRUD</a></li>
+					<li><a href="app/views/customGrid.html">GRID</a></li>
+					<li><a href="app/views/slider.html">SLIDER</a></li>
+					<li><a href="spa.html">SPA</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+	<div class="heroBanner">
+		<div class="heroContainer">
+			<h1 class="heroHeader">My Web creations</h1>
+		</div>
+	</div><!-- END heroBanner -->
+
+<div class="contentRow">
+	<div class="col-m-3">
+		<div class="contentHeader">
+			<p>Apps</p>
+			
+		</div>
+		<div class="contentSection">
+			<ul class="boxList">
+				<li><a href="app/views/crud.html">AngularJS Crud</a></li>
+				<li><a href="app/views/calendarApp.html">Calendar</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-m-3">
+		<div class="contentHeader">
+			<p >Components</p>
+		</div>
+		<div class="contentSection">
+			<ul class="boxList">
+				<li><a href="app/views/customGrid.html">AngularJS Grid</a></li>
+				<li><a href="app/views/slider.html">AngularJS Slider</a></li>
+				<li><a href="app/views/jstips.html#sliderComponent">Slider</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-m-3">
+		<div class="contentHeader">
+			<p>Games</p>
+		</div>
+		<div class="contentSection">
+			<ul class="boxList">
+				<li><a href="app/views/games/pacman.html">Pacmann</a></li>
+				<li><a href="app/views/games/fly.html">Fly</a></li>
+				<li><a href="app/views/games/BallonBursting.html">Ballon</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- END contentRow -->
+
+<div class="footer"><div class="contentHeader"></div></div><!-- END Main Container -->
+
+</div><!-- END Main Container -->
+	<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				console.log("Toggle click------- Menu : " + $("#menu").css('display') );
+				//$("#menu").toggleClass( "showMenu" );
+				if($("#menu").css('display') == 'none'){
+					console.log("Menu Visible---Make block-");
+					$("#menu").css({"display":"block"});
+				}else{
+					console.log("Menu Visible--Make none--");
+					$("#menu").css({"display":"none"})
+				}
+			});
+		})();
+	</script>
+</body>
+</html>

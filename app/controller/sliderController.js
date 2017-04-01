@@ -6,5 +6,5 @@ App.controller("sliderController", ['$scope', function($scope){
                     {name:"tech4.jpg"}, 
                     {name:"tech5.jpg"}
                     ];
-    console.log("sliderController------" + $scope.images);
+    console.log("SliderController------");
 }]);

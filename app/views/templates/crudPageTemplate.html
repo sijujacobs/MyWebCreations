@@ -1,0 +1,49 @@
+<div class="crudContainer greyFont" ng-init="init();">
+
+    <div class="topicContainer greyFont">
+        <h3>Tutorial AngularJS-PHP-MySQL CRUD Application</h3>
+        <h5>Topics </h5>
+        <ul>
+            <li>Full stack Application</li>
+            <li>MVC design</li>
+            <li>Service & Factory</li>
+            <li>Controller</li>
+            <li>Connect to MySql database</li>
+            <li>PHP API</li>
+        </ul>
+    </div>
+    <hr>
+
+				<!-- Table to show member detalis -->
+    <p><a ng-click="showMemberLoginModal()" id="loginButton" href="">LOGIN</a> to play with CRUD app</p>
+    <div class="table-responsive">
+            <table class="table table-hover">
+            <tr>
+            <th>Member ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            </tr>
+            <!-- 
+            selected-member="" directive-function="directiveCallBack(member, $index)"  
+            ng-click="memberSingleClick(member, $index)"
+        -->
+            <tr ng-repeat="member in members| filter:search_query" ng-disabled="isButtonDisabled" ng-dblclick="isButtonDisabled || showMemberViewModal(member)"  ng-class="{selectedRowColor: $index == selectedRowIndex}" >
+                <td><span>{{$index + 1}}</span></td>
+                <td>{{member.firstName}}</td>
+                <td>{{member.lastName}}</td>
+                <td>{{member.email}}</td>
+                <td>{{member.phone}}</td>
+                </tr>
+            </table>
+    </div>
+
+        <member-view-modal><p class="modal-title">Member View Modal Content Goes here</p></member-view-modal>
+        <login-modal><p class="modal-title">Modal Content Goes here</p></login-modal>
+        <div class="actionContainer" >
+            <input class="btn btn-info" value="Insert" ng-click="insertButtonClicked()" ng-disabled="isButtonDisabled">
+            <input class="btn btn-info" value="Edit" ng-click="editButtonClicked()" ng-disabled="isButtonDisabled">
+            <input class="btn btn-danger" value="Delete" ng-click="deleteButtonClicked()" ng-disabled="isButtonDisabled">
+        </div>
+</div>

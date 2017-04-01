@@ -2,96 +2,63 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>My Web Creations</title>
+	<title>My Web Creations - SPA</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-   <link rel="stylesheet" href="css/myWebCreationStyle.css">
-	<style>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="../../css/myWebCreationStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+   <style>
 
 	</style>
 </head>
-<body>
+<body ng-app="myApp">
 		<!-- Main Container -->
 <div id="mainContainer">
 	
 	<div id="navMenuBar">
 		<label for="toggleCheckBox" class="toggleButton">☰</label>
 		<ul id="menu">
-			<li><a  class="disableActiveLink" href="#">HOME</a></li>
-			<li><a href="app/views/jstips.html">HTML/CSS</a></li>
+			<li><a ui-sref="home">Home</a></li>
+            <li><a href="../../app/views/jstips.html">HTML/CSS</a></li>
 			<li>
 				<a class="dropDownHeader" href="#">ANGULARJS</a>
 				<ul class="dropDownMenu">
-					<li><a href="app/views/crud.html">CRUD</a></li>
-					<li><a href="app/views/customGrid.html">GRID</a></li>
-					<li><a href="app/views/slider.html">SLIDER</a></li>
+					<li><a ui-sref="slider">Slider</a></li>
+					<li><a ui-sref="grid">Grid</a></li>
+					<li><a ui-sref="crud">CRUD</a></li>
+
 				</ul>
 			</li>
 			
 		</ul>
 	</div>
-	<div class="heroBanner">
-		<div class="heroContainer">
-			<h1 class="heroHeader">My Web creations</h1>
-		</div>
-	</div><!-- END heroBanner -->
-
+	
 <div class="contentRow">
-	<div class="col-m-3">
-		<div class="contentHeader">
-			<p>Apps</p>
-			
-		</div>
-		<div class="contentSection">
-			<ul class="boxList">
-				<li><a href="app/views/crud.html">AngularJS Crud</a></li>
-				<li><a href="app/views/calendarApp.html">Calendar</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="col-m-3">
-		<div class="contentHeader">
-			<p >Components</p>
-		</div>
-		<div class="contentSection">
-			<ul class="boxList">
-				<li><a href="app/views/customGrid.html">AngularJS Grid</a></li>
-				<li><a href="app/views/slider.html">AngularJS Slider</a></li>
-				<li><a href="app/views/jstips.html#sliderComponent">Slider</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="col-m-3">
-		<div class="contentHeader">
-			<p>Games</p>
-		</div>
-		<div class="contentSection">
-			<ul class="boxList">
-				<li><a href="app/views/games/pacman.html">Pacmann</a></li>
-				<li><a href="app/views/games/fly.html">Fly</a></li>
-				<li><a href="app/views/games/BallonBursting.html">Ballon</a></li>
-			</ul>
-		</div>
-	</div>
+	
+    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+    <div ui-view></div>
+
 </div><!-- END contentRow -->
 
-<div class="footer"><div class="contentHeader"></div></div><!-- END Main Container -->
 
 </div><!-- END Main Container -->
-	<script>
-		(function(){
-			$(document).on( "click", ".toggleButton", function() {
-				console.log("Toggle click------- Menu : " + $("#menu").css('display') );
-				//$("#menu").toggleClass( "showMenu" );
-				if($("#menu").css('display') == 'none'){
-					console.log("Menu Visible---Make block-");
-					$("#menu").css({"display":"block"});
-				}else{
-					console.log("Menu Visible--Make none--");
-					$("#menu").css({"display":"none"})
-				}
-			});
-		})();
-	</script>
+<div class="footer">
+	
+</div><!-- END footer -->
+ <script src="app/app.js"></script>
+	
+<script src="app/controller/sliderController.js"></script>
+<script src="app/directives/sliderDirective.js"></script>
+
+<script src="app/controller/customGridController.js"></script>
+<script src="app/services/deviceFactory.js"></script>
+<script src="app/directives/gridDirective.js"></script>
+
+<!-- <script src="app/services/MemberService.js"></script> -->
+<script src="app/controller/memberController.js"></script>
+<script src="app/services/memberFactory.js"></script>
 </body>
 </html>

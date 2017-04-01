@@ -1,64 +1,6 @@
 'use strict';
 
-App.controller('customGridController', ['$scope', 'fruitFactory', function ($scope, fruitFactory) {
-    $scope.totalFruitBought = 0;
-    $scope.totalFruitSold = 0;
-      
-    $scope.name = "Harry";
-    $scope.reverseName = function(){
-        $scope.name = $scope.name.split('').reverse().join('');
-    };
-    
-    $scope.getCVariable = function () {
-        return "Variable-From-customGridController"; 
-    }
-     $scope.getFruits = function () {
-         //console.log("Localhost: customGridController---getFruits--------");
-         fruitFactory.getFruits()
-            .then(function (response) {
-                $scope.fruits = response.data.trades;
-                console.log("Localhost: customGridController---getFruits--------" + $scope.fruits);
-                angular.forEach($scope.fruits, function(value, index) {
-                var thisFruit = $scope.fruits[index];
-                    for(var d in thisFruit){
-                        //console.log("Json Data : d " + thisFruit[d]);
-                    }
-                });
-            }, function (error) {
-                $scope.status = 'Unable to load fruit data: ' + error.message;
-            });
-    }
-
-    function sortOn(collection, name ) {
-        collection.sort(
-            function( a, b ) {
-                if ( a[ name ] <= b[ name ] ) {
-                    return( -1 );
-                }
-                return( 1 );
-            }
-        );
-    }
-
-    $scope.groupBy = function(attribute) {
-        $scope.groups = [];
-        sortOn( $scope.devices, attribute );
-        var groupName = "TEMP_GROUP_NAME";
-        for (var i = 0; i < $scope.devices.length; i++ ) {
-            var fruit = $scope.devices[i];
-            var fruitName = fruit[attribute];
-            if (fruitName !== groupName) {
-                var group = {
-                    name: fruitName,
-                    fruits: []
-                };
-                groupName = group.name;
-                $scope.groups.push(group);
-            }
-            group.fruits.push(fruit);
-        }
-    };
-  
+App.controller('customGridController', ['$scope', 'deviceFactory', function ($scope, deviceFactory) {
 
     $scope.devices = [
                 {"txnId":1 , "name":"Apple" , "action":"Buy" , "quantity":10, "price":555 , "marketPrice":500, "state":"Florida"} ,
@@ -76,5 +18,58 @@ App.controller('customGridController', ['$scope', 'fruitFactory', function ($sco
                 {"txnId":13 , "name":"Apple" , "action":"Sell" , "quantity":20, "price":525 , "marketPrice":110, "state":"Texas"}
                 ];  
      $scope.groups = [];
- 
+ console.log("CustomGridController-----------" );
+
+     $scope.groupBy = function(attribute) {
+        $scope.groups = [];
+        sortOn( $scope.devices, attribute );
+        var groupName = "TEMP_GROUP_NAME";
+        for (var i = 0; i < $scope.devices.length; i++ ) {
+            var fruit = $scope.devices[i];
+            var fruitName = fruit[attribute];
+            if (fruitName !== groupName) {
+                var group = {
+                    name: fruitName,
+                    fruits: []
+                };
+                groupName = group.name;
+                $scope.groups.push(group);
+            }
+            group.fruits.push(fruit);
+        }
+    };
+
+        function sortOn(collection, name ) {
+        collection.sort(
+            function( a, b ) {
+                if ( a[ name ] <= b[ name ] ) {
+                    return( -1 );
+                }
+                return( 1 );
+            }
+        );
+    }
+    /*
+     $scope.getFruits = function () {
+         deviceFactory.getFruits()
+            .then(function (response) {
+                $scope.fruits = response.data.trades;
+                console.log("Localhost: customGridController---getFruits--------" + $scope.fruits);
+                angular.forEach($scope.fruits, function(value, index) {
+                var thisFruit = $scope.fruits[index];
+                    for(var d in thisFruit){
+                    
+                    }
+                });
+            }, function (error) {
+                $scope.status = 'Unable to load fruit data: ' + error.message;
+            });
+    }
+
+
+
+
+  
+*/
+
 }]);

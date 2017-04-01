@@ -148,7 +148,7 @@ App.controller('memberController', ['$scope', 'dataFactory', function ($scope, d
     $scope.showMemberViewModal = function(member) {
         $scope.selectedMember = member ? member:$scope.clearMember();
         $scope.isMemberViewVisible = true;
-        console.log("showMemberViewModal: showMemberViewModal : " + $scope.isMemberViewVisible);
+        console.log("showMemberViewModal: showMemberViewModal : isMemberViewVisible " + $scope.isMemberViewVisible);
     };
 
     $scope.showConfirmationModal = function(member) {
@@ -208,6 +208,7 @@ App.directive('memberViewModal', function() {
       replace: true, // Replace with the template below
       transclude: true, // we want to insert custom content inside the directive
       link: function(scope, element, attrs) {
+          console.log("-------memberViewModal---inside Member view Modal");
         scope.dialogStyle = {};
         if (attrs.width)
           scope.dialogStyle.width = attrs.width;
@@ -291,7 +292,7 @@ App.directive('ngConfirmClick', [function(){
                 +'      <input class="formField" type="password" id="lname"  ng-model="password">'
                 +'    </div>'
                 +' <input class="formButton" type="submit" value="Log in" ng-click="verifyMember(email, password)">'
-                +' <input class="formButton closeButton" value="Cancel" ng-click="closeModal()">'
+                +' <input class="formButton" value="Cancel" ng-click="closeModal()">'
                 +'  </form>'
                 +'</div>'
                 +'</div>'

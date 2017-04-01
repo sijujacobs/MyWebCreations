@@ -1,0 +1,48 @@
+<div class="sliderContainer" ng-init="groupBy('name')">
+    <div class="pageHeader">
+        <h2>AngularJS Directive -  Grid with Multiple Grouping</h2>
+        <p>This page demonstrates <span class="text-danger">grid</span> and related topics.</p>   
+    </div> 
+
+
+    
+    <div class="gridContainer">
+        <div class="greyFont">
+            <h5>Topics </h5>
+            <ul>
+                <li>isolated scope</li>
+                <li>template</li>
+                <li>Multiple grouping</li>
+            </ul>
+        </div>
+        <hr>
+        <img width="90%" height="auto" ng-src="../../images/customGridData.png">
+        <hr>
+        <custom-grid source-data="groups" group-data="name-state"></custom-grid>
+        <hr>
+        <h4>Typical Grid - Multiple Grouping </h4>
+        <button ng-click="groupBy('name')">Device</button> -
+        <button ng-click="groupBy('state')">State</button>
+        <hr>
+        <div class="typicalGrid">
+            <div class="gridTitle">
+                <div class="dataHeader">Device</div>
+                <div class="dataHeader">State</div>
+                <div class="dataHeader">Action</div>
+                <div class="dataHeader">Quantity</div>
+                <div class="dataHeader">Price</div>
+            </div>
+            <div ng-repeat="g in groups">
+                <span class="groupHeader"> {{g.name}}</span>
+                <ul>
+                    <li class="dataRow" ng-repeat="f in g.fruits">
+                        <div><div class="dataCol">{{f.state}}</div>
+                        <div class="dataCol">{{f.action}}</div>
+                        <div class="dataCol">{{f.quantity}}</div>
+                        <div class="dataCol">{{f.price}}</div></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
