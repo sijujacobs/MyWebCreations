@@ -36,12 +36,10 @@
 		</ul>
 	</div>
 	
-<div class="contentRow">
 	
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-    <div ui-view></div>
+    <div class="commonContainer" ui-view></div>
 
-</div><!-- END contentRow -->
 
 
 </div><!-- END Main Container -->
@@ -49,7 +47,9 @@
 	
 </div><!-- END footer -->
  <script src="app/app.js"></script>
-	
+
+<script src="app/services/commonFactory.js"></script>
+
 <script src="app/controller/sliderController.js"></script>
 <script src="app/directives/sliderDirective.js"></script>
 

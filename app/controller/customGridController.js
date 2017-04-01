@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('customGridController', ['$scope', 'deviceFactory', function ($scope, deviceFactory) {
+App.controller('customGridController', ['$scope', 'deviceFactory', 'commonFactory', function ($scope, deviceFactory, commonFactory) {
 
     $scope.devices = [
                 {"txnId":1 , "name":"Apple" , "action":"Buy" , "quantity":10, "price":555 , "marketPrice":500, "state":"Florida"} ,
@@ -19,6 +19,8 @@ App.controller('customGridController', ['$scope', 'deviceFactory', function ($sc
                 ];  
      $scope.groups = [];
  console.log("CustomGridController-----------" );
+
+
 
      $scope.groupBy = function(attribute) {
         $scope.groups = [];
@@ -49,6 +51,8 @@ App.controller('customGridController', ['$scope', 'deviceFactory', function ($sc
             }
         );
     }
+
+    $scope.commonData = commonFactory.getCommonData();
     /*
      $scope.getFruits = function () {
          deviceFactory.getFruits()
