@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>My Web Creations</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../css/myWebCreationStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+
+	img {
+		width: 600px;
+		height: 200px;
+	}
+	</style>
+</head>
+<body>
+	<!-- -Main Container -->
+	<div id="mainContainer" >
+		<div id="navMenuBar">
+			<label for="toggleCheckBox" class="toggleButton">☰</label>
+			<ul id="menu">
+				<li><a href="../../index.html">HOME</a></li>
+				<li><a href="../../app/views/jstips.html">HTML/CSS</a></li>
+				<li><a class="disableActiveLink" href="../../app/views/crud.html">CRUD</a></li>
+				<li><a href="../../app/views/customGrid.html">ANGULARJS</a></li>
+				<li><a ng-click="showMemberLoginModal()" id="loginButton" href="#">LOGIN</a></li>
+			</ul>
+		</div>
+		<div class="container" ng-controller="sliderController">
+			<h3>Tutorial - AngularJS Slider</h3>
+
+			 <custom-slider images="images"> <custom-slider/>
+		</div>
+		<div class="footer"></div>
+		
+	</div><!-- END Main Container -->
+	<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				console.log("togglebutton clicked----");
+				$("#menu").toggleClass( "showMenu" );
+			});
+		})();
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="http://code.angularjs.org/1.2.9/angular-animate.min.js"></script>
+
+	<script src="../../app/app.js"></script>
+	<script src="../../app/controller/sliderController.js"></script>
+	<script src="../../app/directives/sliderDirective.js"></script>
+
+</body>
+</html>
