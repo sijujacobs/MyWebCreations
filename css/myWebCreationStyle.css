@@ -36,7 +36,6 @@
 		width: 95%;
 		height: auto;
 		margin: auto;
-		margin-top: 40px;
 	}
 
 		.homepageContainer{
@@ -422,7 +421,7 @@
 	}
 
 	.arrowNext{
-	float: right;
+		float: right;
 	}
 
 	.arrowPrev{
