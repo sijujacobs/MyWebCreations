@@ -24,6 +24,7 @@
       $lastName           = $dataJsonDecode->lastName;
       $phone              = $dataJsonDecode->phone;
       $email              = $dataJsonDecode->email;
+      $status              = $dataJsonDecode->status;
       $password           = $dataJsonDecode->password;
 
       if(!empty($_GET["functionName"])){
@@ -38,16 +39,16 @@
       // create SQL based on HTTP method
       switch ($method) {
         case 'GET':
-          $query              = "SELECT memberId, firstName, lastName, phone, email FROM member"; 
+          $query              = "SELECT memberId, firstName, lastName, phone, email, status FROM member"; 
           break;
         case 'PUT':
-          $query              = "UPDATE member SET firstName='$firstName', lastName='$lastName' , phone='$phone', email='$email' WHERE memberId = '$memberId'";
+          $query              = "UPDATE member SET firstName='$firstName', lastName='$lastName' , phone='$phone', email='$email', status='$status' WHERE memberId = '$memberId'";
           break;
         case 'POST':
           if($functionName  == 'VERIFY_MEMBER'){
-            $query             = "SELECT memberId, firstName, lastName, phone, email FROM member WHERE email='$email' AND password = '$password'";
+            $query             = "SELECT memberId, firstName, lastName, phone, email, status FROM member WHERE email='$email' AND password = '$password'";
           }else{
-            $query             = "INSERT into member(firstName, lastName, email, phone) VALUES ('$firstName' , '$lastName', '$email', '$phone')";
+            $query             = "INSERT into member(firstName, lastName, email, status, phone) VALUES ('$firstName' , '$lastName', '$email', '$status', $phone')";
           }
           break;
         case 'DELETE':
