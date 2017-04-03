@@ -23,6 +23,10 @@ App.config(function($stateProvider, $urlRouterProvider) {
             url: '/crud',
             templateUrl: 'app/views/templates/crudPageTemplate.html',
             controller:'memberController'
+        })
+        .state('event', {
+            url: '/event',
+            templateUrl: 'app/views/templates/eventPageTemplate.html'
         });
 });
 

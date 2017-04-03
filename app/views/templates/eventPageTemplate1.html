@@ -1,0 +1,161 @@
+
+
+
+<div style="width:100%; display: block" >
+    <div id="OuterDiv" style="margin:40px; color:#000; background:#166bad; width:400px; height:300px; border:1px solid aqua">
+        <div id="InnerDiv" style="margin:20px; padding:30px; background:#00ff9a; width:90%; height:150px; border:1px solid blue">
+            <form action="">
+                <input id="Default" type="radio" name="event" value="male" > Default<br>
+                <input id="StopPropagation" type="radio" name="event" value="male" > StopPropagation<br>
+                <input id="StopImmediatePropagation" type="radio" name="event" value="female" > StopImmediatePropagation<br>
+                <input id="PreventDefault" type="radio" name="event" value="other" > PreventDefault
+            </form>
+        </div>
+    </div>
+      
+    <div id="resultDiv" style="color:#888; margin:20px; padding:20px; width:100%; height:300px;">
+        <h3 style="color:#888; width:100%"> Blue Box - Click</h3>
+            <p>Get 2 alert messages </p>
+            <ul>
+                <li> Blue box Capturing phase</li>
+                <li> Blue box Bubbling phase</li>
+            </ul>
+        <h3 style="color:#888; width:100%">Green Box - Click</h3>
+            <p>Get 4 alert messages </p>
+            <ul>
+                <li> Blue box Capturing phase</li>
+                <li> Green box Capturing phase</li>
+                <li> Green box Bubbling phase</li>
+                <li> Blue box Bubbling phase</li>
+            </ul>
+        <h3 style="color:#888; width:100%">Default - Click</h3>
+            <p>Get 6 alert messages - This will not bubble parent elements</p>
+            <ul>
+                <li> Blue box Capturing phase</li>
+                <li> Green box Capturing phase</li>
+                <li> AlertMessage  one </li>
+                <li> AlertMessage  two </li>
+                <li> Green box Bubbling phase</li>
+                <li> Blue box Bubbling phase</li>
+            </ul>
+        <h3 style="color:#888; width:100%">Stop propogation - Click</h3>
+            <p>Get 4 alert messages - This will not bubble parent elements</p>
+            <ul>
+                <li> Blue box Capturing phase</li>
+                <li> Green box Capturing phase</li>
+                <li> AlertMessage  one </li>
+                <li> AlertMessage  two </li>
+            </ul>
+        <h3 style="color:#888; width:100%">Stop Immidiate propogation - Click</h3>
+            <p>Get 3 alert messages - This will not bubble other events of the same element and parent elements</p>
+            <ul>
+                <li> Blue box Capturing phase</li>
+                <li> Green box Capturing phase</li>
+                <li> AlertMessage  one </li>
+            </ul>
+        <h3 style="color:#888; width:100%">Prevent default - Click</h3>
+            <p>Get all alert messages - This will fire all messages in capturing and bubbling phase </p>
+            <p>BUT Radio button wont get SELECTED </p>
+            <ul>
+                <li> Blue box Capturing phase</li>
+                <li> Green box Capturing phase</li>
+                <li> AlertMessage  one </li>
+                <li> Green box Bubbling phase</li>
+                <li> Blue box Bubbling phase</li>
+            </ul>
+
+
+    </div>
+
+    <script>
+    $(document).ready(function(){
+        //$('#eventContainer').on('mouseenter','#outerDiv', mouseenterHandler(event));
+
+         var outeDiv = document.getElementById("OuterDiv");
+         var innerDiv = document.getElementById("InnerDiv");
+         var defaultRadio = document.getElementById("Default");
+         var sPro = document.getElementById("StopPropagation");
+         var sImmPro = document.getElementById("StopImmediatePropagation");
+         var prevDefault = document.getElementById("PreventDefault");
+        
+        outeDiv.addEventListener("click", outerDivClickCapturingPhase, true);
+        outeDiv.addEventListener("click", outerDivClickFunction);
+       
+        innerDiv.addEventListener("click", innerDivClickCapturingPhase, true);
+        innerDiv.addEventListener("click", innerDivClickFunction);
+        //innerDiv.addEventListener("mouseleave", innerDivMouseLeave);
+        
+        defaultRadio.addEventListener("click", detaultFunctionCapturing, true);
+        defaultRadio.addEventListener("click", detaultFunctionBubbling);
+
+        sPro.addEventListener("click", stopProFunctionOne);
+        sPro.addEventListener("click", stopProFunctionTwo);
+
+        sImmPro.addEventListener("click", stopImmFunctionOne);
+        sImmPro.addEventListener("click", stopImmFunctionTwo);
+
+        prevDefault.addEventListener("click", prevDefaultOne);
+
+
+//----------- Default RADIO ----------------------------------
+        function detaultFunctionCapturing(event) {
+                 alert ("Default Message One");
+            } 
+
+            function detaultFunctionBubbling(event) {
+                 alert ("Default Message Two");
+            } 
+//-----------  DIV Event handlers ----------------------------------
+            function outerDivClickCapturingPhase(event) {
+                 alert ("Blue Box capturing phase");
+            } 
+
+            function outerDivClickFunction(event) {
+                 alert ("Blue Box bubbling phase");
+            } 
+
+            function innerDivClickCapturingPhase(event) {
+                 alert ("Green Box capturing phase");
+            } 
+
+            function innerDivClickFunction(event) {
+                 alert ("Green Box bubbling phase");
+            } 
+
+            function innerDivMouseLeave(event) {
+                // alert ("Yellow Box MouseLeave");
+            } 
+
+
+//----------- STOP PROPOGATION ----------------------------------
+            function stopProFunctionOne(event) {
+                event.stopPropagation();
+                alert ("stop-Pro-Click-Function-One");
+            } 
+
+            function stopProFunctionTwo() {
+                 alert ("stop-Pro-Click-Function-Two");
+            }
+
+
+//----------- STOP IMMIDIATE PROPOGATION ----------------------------------
+            function stopImmFunctionOne(event) {
+                event.stopImmediatePropagation();
+                alert ("stop-ImmPro-Click-Function-One");
+            } 
+
+            function stopImmFunctionTwo() {
+                 alert ("stop-ImmPro-Click-Function-Two");
+            }
+
+
+//----------- PREVENT DEFAULT ----------------------------------
+            function prevDefaultOne(event) {
+                event.preventDefault();
+                alert ("prevDefaultOne-One");
+            } 
+
+    });
+        
+    </script>
+</div>

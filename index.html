@@ -16,11 +16,11 @@
 		<!-- Main Container -->
 <div id="mainContainer">
 	<div id="navMenuBar">
-		<label for="toggleCheckBox" class="toggleButton">☰</label>
+		<label for="toggleCheckBox" class="toggleButton">...</label>
 		<ul id="menu">
 			<li><a ui-sref="home">Home</a></li>
-            <li><a href="../../app/views/jstips.html">HTML/CSS</a></li>
-			<li>
+			<li><a ui-sref="crud">CRUD</a></li>
+            <li>
 				<a class="dropDownHeader" href="#">ANGULARJS</a>
 				<ul class="dropDownMenu">
 					<li><a ui-sref="slider">Slider</a></li>
@@ -28,6 +28,7 @@
 					<li><a ui-sref="crud">CRUD</a></li>
 				</ul>
 			</li>
+			<li><a ui-sref="event">Event</a></li>
 		</ul>
 	</div>
     <!--  INJECT TEMPLATES HERE -->
@@ -37,6 +38,21 @@
 <div class="footer">
 	
 </div><!-- END footer -->
+<script>
+		(function(){
+			$(document).on( "click", ".toggleButton", function() {
+				console.log("Toggle click------- Menu : " + $("#menu").css('display') );
+				//$("#menu").toggleClass( "showMenu" );
+				if($("#menu").css('display') == 'none'){
+					console.log("Menu Visible---Make block-");
+					$("#menu").css({"display":"block"});
+				}else{
+					console.log("Menu Visible--Make none--");
+					$("#menu").css({"display":"none"})
+				}
+			});
+		})();
+	</script>
 <script src="app/app.js"></script>
 
 <script src="app/services/commonFactory.js"></script>
@@ -51,5 +67,6 @@
 <!-- <script src="app/services/MemberService.js"></script> -->
 <script src="app/controller/memberController.js"></script>
 <script src="app/services/memberFactory.js"></script>
+
 </body>
 </html>
